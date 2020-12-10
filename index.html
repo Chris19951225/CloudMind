@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     <title>CloudMind</title>
-
+    <link rel="icon" type="image/png" href="img/fav.PNG">
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -15,11 +16,11 @@
                 <div class="heading">
                     <h1><i class="fas fa-cloud"></i>CloudMind</h1>
                 </div>
-                <form action="" class="recover-form" id="recover_form">
+                <form class="recover-form" id="recover_form">
                     <h2 class="title">Recover Info</h2>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" placeholder="Email" required>
+                        <input type="email" placeholder="Email" id="recover_email_input" required maxlength="50">
                     </div>
                     <div class="recover-options">
                         <input type="button" value="Back" id="forgot_back_btn" class="btn solid">
@@ -30,38 +31,42 @@
                     <h2 class="title">Sign in</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Username" required>
+                        <input type="text" id="login_uname" placeholder="Username" required maxlength="50">
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" required>
+                        <input type="password" id="login_pass" placeholder="Password" required max="50">
                     </div>
                     <input type="submit" value="Login" class="btn solid">
                     <div class="lost-info">
                         <a href="javascript:void(0);" class="forgot-info-link" id="forgot_info_link">Forgot your username or password?</a>
                     </div>
                 </form>
-                <form action="" class="sign-up-form">
+                <form action="" id="sign_up_form" class="sign-up-form">
                     <h2 class="title">Sign up</h2>
                     <div class="input-field">
                         <i class="fas fa-signature"></i>
-                        <input type="text" placeholder="Firstname" required>
+                        <input type="text" id="reg_fname" placeholder="Firstname" required maxlength="50">
                     </div>
                     <div class="input-field">
                         <i class="fas fa-signature"></i>
-                        <input type="text" placeholder="Surname" required>
+                        <input type="text" id="reg_lname" placeholder="Surname" required maxlength="50">
                     </div>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Username" required>
+                        <input type="text" id="reg_uname" placeholder="Username" required maxlength="50">
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" placeholder="E-mail" required>
+                        <input type="email" id="reg_email" placeholder="E-mail" required maxlength="50">
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" required>
+                        <input type="password" id="reg_pass" placeholder="Password" required maxlength="50">
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="reg_pass_conf" placeholder="Confirm Password" required maxlength="50">
                     </div>
                     <input type="submit" value="Register" class="btn solid">
                 </form>
