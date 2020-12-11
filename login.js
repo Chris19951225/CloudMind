@@ -117,8 +117,7 @@ function getData(TypeStr, OutputStr){
             setInvalid(UsernameInput, 'User does not exist');
         }else{
             //Login
-            alert('Can Login');
-
+            window.location.href='main.php';
         }
     }
 

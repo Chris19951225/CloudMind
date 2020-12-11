@@ -169,7 +169,7 @@ class User
             if ($ResultStr->num_rows > 0) {
                 $row = $ResultStr->fetch_assoc();
                 $this->FnameStr = $row['FirstName'];
-                $this->SnameStr = $row['LastName'];
+                $this->LnameStr = $row['LastName'];
                 $this->EmailStr = $row['EmailAddress'];
                 $this->UnameStr = $row['Username'];
                 $this->PassStr = $row['Password'];

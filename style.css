@@ -150,6 +150,7 @@ form.sign-up-form{
     font-weight: 600;
     margin: 10px 0;
     transition: 0.5s;
+    box-shadow: 2px 2px 4px #000000;
 }
 
 .btn:hover{
@@ -230,6 +231,7 @@ form.sign-up-form{
     height: 40px;
     font-weight: 600;
     font-size: 0.8rem;
+    box-shadow: none;
 }
 
 .image{
@@ -411,4 +413,67 @@ form.sign-up-form{
         bottom:28%;
         left:50%;
     }
+}
+
+.user-icon{
+    float:right;
+    width:100px;
+    text-align: center;
+    margin:10px;
+}
+
+.user-icon:hover:before{
+    content:'User Profile';
+}
+
+.user-icon:hover{
+    width:auto;
+}
+
+.heading.main-page{
+    top:10%;
+    left:48%;
+    width:auto;
+    margin:10px;
+    float:left;
+}
+.posts-page {
+    background: #4481eb;
+    background: linear-gradient(-45deg,#4481eb, #04befe);
+}
+
+.post-box{
+    background-color: #f0f0f0;
+}
+
+.modal.right .modal-dialog {
+    position: fixed;
+    margin: auto;
+    width: 320px;
+    height: 100%;
+    -webkit-transform: translate3d(0%, 0, 0);
+    -ms-transform: translate3d(0%, 0, 0);
+    -o-transform: translate3d(0%, 0, 0);
+    transform: translate3d(0%, 0, 0);
+}
+
+.modal.right .modal-content {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.modal.right .modal-body {
+    padding: 15px 15px 80px;
+}
+
+.modal.right.fade .modal-dialog {
+    right: 0px;
+    -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+    -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+    -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+    transition: opacity 0.3s linear, right 0.3s ease-out;
+}
+
+.modal.right.fade.in .modal-dialog {
+    right: 0;
 }

@@ -26,6 +26,11 @@ function confirmLogin($UsernameStr,$PasswordStr){
     if ($User->loadUser($UsernameStr)) {
         if($User->getPassword() == $PasswordStr){
             echo'Confirmed';
+            session_start();
+            $_SESSION['Username'] = $UsernameStr;
+            $_SESSION['Firstname'] = $User->getFname();
+            $_SESSION['Lastname'] = $User->getLname();
+            $_SESSION['Email'] = $User->getEmail();
         }
         else{
             echo 'Wrong-Password';
