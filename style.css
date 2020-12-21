@@ -39,6 +39,13 @@ body,input{
     justify-content: center;
 }
 
+.change-pass-form{
+    display: none;
+    width:100%;
+    text-align: center;
+    justify-content: center;
+}
+
 .forms-container{
     position: absolute;
     width: 100%;
@@ -82,6 +89,17 @@ form{
     transition: 0.2s 0.7s ease-in-out;
 }
 
+form.edit-info-form{
+    height:100%;
+    margin-top: 10px;
+    align-items: center;
+    overflow-y:auto;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 1rem;
+    display:none;
+}
+
 form.sign-in-form{
     /*Hide sign-up and show sign-in*/
     z-index: 2;
@@ -92,6 +110,10 @@ form.recover-form{
     z-index: 2;
 }
 
+form.change-pass-form{
+    z-index: 2;
+}
+
 form.sign-up-form{
     /*Hide sign-up and show sign-in*/
     z-index: 1;
@@ -99,6 +121,8 @@ form.sign-up-form{
 }
 
 .title{
+    display:flex;
+    margin-top:10px;
     font-size: 2.2rem;
     color: #444;
 }
@@ -144,7 +168,7 @@ form.sign-up-form{
     outline:none;
     border-radius:50px;
     cursor:pointer;
-    background-color: #5995fd;
+    background-color: #04befe;
     color: #fff;
     text-transform: uppercase;
     font-weight: 600;
@@ -278,17 +302,36 @@ form.sign-up-form{
     opacity: 0;
 }
 
+.container.sign-up-mode form.change-pass-form{
+    z-index: 1;
+    opacity: 0;
+}
+
 .container.sign-up-mode form.sign-up-form{
     z-index: 2;
     opacity: 1;
 }
 
 /*Media sizing*/
+@media(max-height: 700px){
+    .container{
+        min-height: 600px;
+    }
+
+    .posts-page{
+        min-height: 1000px;
+    }
+
+    .edit-info-form{
+        min-height: 800px;
+    }
+}
 @media(max-width: 870px) {
     .container {
         min-height: 800px;
         height: 100vh;
     }
+
     .signin-signup {
         width: 100%;
         top: 95%;
@@ -353,8 +396,8 @@ form.sign-up-form{
         width: 1500px;
         height: 1500px;
         transform: translateX(-50%);
-        left: 30%;
-        bottom: 73%;
+        left: 25%;
+        bottom: 75%;
         right: initial;
         top: initial;
         transition: 2s ease-in-out;
@@ -362,7 +405,7 @@ form.sign-up-form{
 
     .container.sign-up-mode:before {
         transform: translate(-50%, 100%);
-        bottom: 32%;
+        bottom: 25%;
         right: initial;
     }
 
@@ -386,8 +429,15 @@ form.sign-up-form{
         transform: translate(-50%, 0);
     }
 }
-
+@media(max-width: 700px){
+    .posts-page{
+        min-height: 1000px;
+    }
+}
 @media(max-width:570px){
+    .posts-page{
+        min-height: 1000px;
+    }
     form{
         padding:0 1.5rem;
     }
@@ -405,12 +455,12 @@ form.sign-up-form{
     }
 
     .container::before{
-        bottom:72%;
-        left:50%;
+        bottom:78%;
+        left:40%;
     }
 
     .container.sign-up-mode::before{
-        bottom:28%;
+        bottom:25%;
         left:50%;
     }
 }
@@ -431,42 +481,165 @@ form.sign-up-form{
 }
 
 .heading.main-page{
+    padding-top:40px;
     top:10%;
     left:48%;
     width:auto;
     margin:10px;
     float:left;
 }
+
+#info_save_btn{
+    display:none;
+}
+#info_back_btn{
+    display: none;
+}
+.main-title{
+    font-weight: 700;
+    font-size: 3rem;
+}
+.close{
+    right:5%;
+    position:absolute;
+    margin-top:16px;
+}
+.user-name{
+    margin-top:125px;
+    width:100%;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.text-center{
+    margin-top:10%;
+}
+
+h3{
+    font-weight: 600;
+    line-height: 1;
+    font-size: 1.5rem;
+    color:white;
+    text-shadow: 2px 2px 4px #000000;
+}
+
 .posts-page {
+    position: absolute;
+    height:100%;
+    width:100%;
     background: #4481eb;
-    background: linear-gradient(-45deg,#4481eb, #04befe);
+    background: url('img/cloudBackground.jpg');
 }
 
 .post-box{
-    background-color: #f0f0f0;
+    height: 75%;
+    position:absolute;
+    margin-top:10px;
+    top:58%;
+    left:50%;
+    display: grid;
+    border-radius: 40px;
+}
+.post-placeholder{
+    height:50px;
+    width:100%;
+    border-radius: 50px;
+    padding:12px;
+    box-shadow: 2px 2px 4px #000000;
+    border: 0 none #FFF;
+    overflow: hidden;
+    outline:none;
+}
+p.post-text{
+    width:auto;
+    padding:10px;
+    word-wrap: break-word;
+    overflow-y: auto;
+    text-align: center;
+    max-height: 180px;
+}
+
+.posts-heading{
+    padding:10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h2{
+    width:auto;
+    word-wrap: break-word;
+    padding:10px;
+}
+
+.posts-heading h2{
+    color:white;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.posts-list{
+    width:100%;
+}
+
+.post-cont{
+    width:80%;
+    max-height: 500px;
+    padding:15px;
+    border:solid white;
+    border-radius: 40px;
+    margin:5px;
+    display:inline-block;
+    background: linear-gradient(-45deg, #04affe, #3693e5);
+    box-shadow: 2px 2px 4px #000000;
+}
+
+.posts{
+    overflow-y:auto;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+    transition: height 2s;
+}
+
+#bottom_post_button{
+    width:40px;
+    height:40px;
+    position:absolute;
+    right:4.9%;
+    bottom:19.5%;
+    font-size: 1rem;
 }
 
 .modal.right .modal-dialog {
     position: fixed;
     margin: auto;
-    width: 320px;
+    width: 420px;
     height: 100%;
     -webkit-transform: translate3d(0%, 0, 0);
     -ms-transform: translate3d(0%, 0, 0);
     -o-transform: translate3d(0%, 0, 0);
     transform: translate3d(0%, 0, 0);
 }
-
+.md-textarea{
+    text-align: center;
+}
 .modal.right .modal-content {
     height: 100%;
     overflow-y: auto;
 }
-
+.modal-backdrop{
+    filter:blur(1px);
+}
 .modal.right .modal-body {
-    padding: 15px 15px 80px;
+    padding: 15px 15px 30px;
 }
 
 .modal.right.fade .modal-dialog {
+    box-shadow: 1px 1px 8px #000000;
     right: 0px;
     -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
     -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
@@ -476,4 +649,105 @@ form.sign-up-form{
 
 .modal.right.fade.in .modal-dialog {
     right: 0;
+}
+
+.modal-header i{
+    position:absolute;
+    left:43%;
+    margin-top:20px;
+    font-size: 5rem;
+}
+
+div .post-box{
+    font-size: 1.2rem;
+    transform:translate(-50%,-50%);
+    text-align: center;
+    transition: 1s 0.7s ease-in-out;
+    background: linear-gradient(-45deg, #4481eb,#04befe);
+    box-shadow: 2px 2px 4px #000000;
+}
+
+/*Scroll Bar*/
+/* width */
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+    background-color: white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #04befe;
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px grey;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #4481eb;
+}
+
+p.sure{
+    margin: 50px;
+    text-align: center;
+    color: red;
+}
+
+p.user-info{
+    text-align: center;
+    width:100%;
+    word-wrap: break-word;
+}
+
+.delete-post{
+    background-color: #04befe;
+    width:50px;
+}
+
+.delete-post:hover{
+    background-color: red;
+}
+
+.yes-delete-post:hover{
+    background-color: red;
+}
+
+li.new-item {
+    opacity: 0;
+    animation: new-item-animation .3s linear forwards;
+}
+
+@keyframes new-item-animation {
+    from {
+        opacity: 0;
+        transform: translateY(-400px);
+    }
+
+    to {
+        opacity: 1;
+        transform : translateY(0);
+    }
+}
+
+li.removed-item {
+    animation: removed-item-animation 1s cubic-bezier(0.55, -0.04, 0.91, 0.94) forwards;
+    /*transform origin is moved to the bottom left corner*/
+    transform-origin: 0% 100%;
+}
+
+@keyframes removed-item-animation {
+    0% {
+        opacity: 1;
+        transform: rotateZ(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(600px) rotateZ(90deg);
+    }
 }

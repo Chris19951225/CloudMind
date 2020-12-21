@@ -19,16 +19,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="12fc683e-8687-47bc-af90-945b699a8157" name="Default Changelist" comment="Done with Login Page">
-      <change afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.php" afterDir="false" />
+    <list default="true" id="12fc683e-8687-47bc-af90-945b699a8157" name="Default Changelist" comment="Moved onto index.html">
+      <change afterPath="$PROJECT_DIR$/Post.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/CloudMind.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CloudMind.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dataHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/dataHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/main.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,14 +68,41 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../phpExercise" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../phpTraining" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\hrist\PhpstormProjects\CloudMind\img" />
     </key>
+  </component>
+  <component name="RunManager" selected="PHP Script.dataHandler.php">
+    <configuration name="EmailTest.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/EmailTest.php">
+      <method v="2" />
+    </configuration>
+    <configuration name="Post.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/Post.php">
+      <method v="2" />
+    </configuration>
+    <configuration name="Test.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/Test.php">
+      <method v="2" />
+    </configuration>
+    <configuration name="User.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/User.php">
+      <method v="2" />
+    </configuration>
+    <configuration name="dataHandler.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/dataHandler.php">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHP Script.dataHandler.php" />
+        <item itemvalue="PHP Script.Post.php" />
+        <item itemvalue="PHP Script.Test.php" />
+        <item itemvalue="PHP Script.User.php" />
+        <item itemvalue="PHP Script.EmailTest.php" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -92,7 +120,17 @@
       <workItem from="1607502600305" duration="309000" />
       <workItem from="1607503042484" duration="147000" />
       <workItem from="1607503208202" duration="23973000" />
-      <workItem from="1607579077210" duration="40417000" />
+      <workItem from="1607579077210" duration="44215000" />
+      <workItem from="1607689456303" duration="6745000" />
+      <workItem from="1607696220009" duration="23340000" />
+      <workItem from="1607765665221" duration="3840000" />
+      <workItem from="1607769519675" duration="19196000" />
+      <workItem from="1607858570982" duration="617000" />
+      <workItem from="1607859202317" duration="2295000" />
+      <workItem from="1607861525643" duration="19319000" />
+      <workItem from="1607933705113" duration="36282000" />
+      <workItem from="1608272251014" duration="27826000" />
+      <workItem from="1608449064831" duration="10028000" />
     </task>
     <task id="LOCAL-00001" summary="changes to images, animations, transitions, spacing and more style things.">
       <created>1607504213586</created>
@@ -115,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607607443434</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Moved onto index.html">
+      <created>1607673454643</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1607673454643</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,7 +182,8 @@
     <MESSAGE value="changes to images, animations, transitions, spacing and more style things." />
     <MESSAGE value="Super responsive index page with no functionality" />
     <MESSAGE value="Done with Login Page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Done with Login Page" />
+    <MESSAGE value="Moved onto index.html" />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved onto index.html" />
   </component>
   <component name="WindowStateProjectService">
     <state x="475" y="55" key="#PHP" timestamp="1607533995514">
@@ -148,10 +194,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1607503304077" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1607667722591">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1607933231754">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1607667722591" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1607933231754" />
     <state x="645" y="310" key="Github.ShareDialog" timestamp="1607497922086">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -160,21 +206,45 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="579" y="117" key="Github.UntrackedFilesDialog/0.0.1536.824@0.0.1536.824" timestamp="1607497935857" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1608449049071">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1608449049071" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1608449049071">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1608449049071" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1608449049070">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1608449049070" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1608449049071">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1608449049071" />
     <state x="558" y="135" key="NewPhpClassDialog" timestamp="1607582913530">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="558" y="135" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1607582913530" />
-    <state x="604" y="335" key="NewPhpFileDialog" timestamp="1607611522501">
+    <state x="604" y="335" key="NewPhpFileDialog" timestamp="1607934752394">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="604" y="335" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1607611522501" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1607589770787">
+    <state x="604" y="335" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1607934752394" />
+    <state x="373" y="22" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1608280486867">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1607589770787" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1607589967079">
+    <state x="373" y="22" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1608280486867" />
+    <state x="590" y="183" key="refactoring.ChangeSignatureDialog" timestamp="1607930201158">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1607589967079" />
+    <state x="590" y="183" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1607930201158" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1608455355884">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1608455355884" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1608188581369">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1608188581369" />
   </component>
 </project>

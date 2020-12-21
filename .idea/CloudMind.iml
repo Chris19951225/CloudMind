@@ -8,5 +8,6 @@
     <orderEntry type="library" name="jquery-latest" level="application" />
     <orderEntry type="library" name="bootstrap.bundle" level="application" />
     <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="popper.js" level="application" />
   </component>
 </module>

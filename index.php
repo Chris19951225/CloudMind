@@ -5,25 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <title>CloudMind</title>
+    <title>CloudMind Login or Register</title>
     <link rel="icon" type="image/png" href="img/fav.PNG">
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <div class="container">
-        <div class="post-box .col-md-6 .col-md-offset-3">
-            <p>lorum ipsum dolor.</p>
-        </div>
         <div class="forms-container">
             <div class="signin-signup">
                 <div class="heading">
                     <h1><i class="fas fa-cloud"></i>CloudMind</h1>
                 </div>
+                <form class="change-pass-form" id="change_pass_form">
+                    <h2 class="title">Change Password</h2>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="New Password" id="change_pass" required maxlength="50">
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Confirm New Password" id="change_pass_conf" required maxlength="50">
+                    </div>
+                    <div class="change-options">
+                        <input type="button" value="Cancel" id="change_back_btn" class="btn solid">
+                        <input type="submit" value="Change" class="btn solid">
+                    </div>
+                </form>
                 <form class="recover-form" id="recover_form">
                     <h2 class="title">Recover Info</h2>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" placeholder="Email" id="recover_email_input" required maxlength="50">
+                        <input type="email" placeholder="Email" id="recover_email_input" required maxlength="250">
                     </div>
                     <div class="recover-options">
                         <input type="button" value="Back" id="forgot_back_btn" class="btn solid">
@@ -61,7 +73,7 @@
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" id="reg_email" placeholder="E-mail" required maxlength="50">
+                        <input type="email" id="reg_email" placeholder="Email" required maxlength="250">
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
@@ -98,6 +110,6 @@
             </div>
         </div>
     </div>
-    <script src="login.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>
