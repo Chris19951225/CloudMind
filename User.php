@@ -326,13 +326,11 @@ class User
 
                     $ConnStr->close();
                     return true;
-                }else {
-
-                    $ConnStr->close();
-                    return false;
                 }
             }
         }
+        $ConnStr->close();
+        return false;
     }
 
     function deleteUser(){
@@ -351,10 +349,10 @@ class User
                 $ConnStr->close();
                 return true;
             }
-        } else {
-            $ConnStr->close();
-            return false;
         }
+
+        $ConnStr->close();
+        return false;
     }
 
     function deleteUserPerm($UserIdInt){
@@ -372,10 +370,10 @@ class User
                 $ConnStr->close();
                 return true;
             }
-        } else {
-            $ConnStr->close();
-            return false;
         }
+
+        $ConnStr->close();
+        return false;
     }
 
 
@@ -401,9 +399,9 @@ class User
                 $this->PassStr = $row['Password'];
                 return true;
             }
-        }else {
-            return false;
         }
+
+        return false;
     }
 
     function loadUserThroughEmail($EmailStr){
@@ -427,9 +425,9 @@ class User
                 $this->PassStr = $row['Password'];
                 return true;
             }
-        }else {
-            return false;
         }
+
+        return false;
     }
 
     function loadAllDeletedUsers() {

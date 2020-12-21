@@ -638,7 +638,7 @@ h2{
 
 .modal.right.fade .modal-dialog {
     box-shadow: 1px 1px 8px #000000;
-    right: 0px;
+    right: 0;
     -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
     -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
     -o-transition: opacity 0.3s linear, right 0.3s ease-out;
@@ -735,7 +735,7 @@ li.new-item {
 li.removed-item {
     animation: removed-item-animation 1s cubic-bezier(0.55, -0.04, 0.91, 0.94) forwards;
     /*transform origin is moved to the bottom left corner*/
-    transform-origin: 0% 100%;
+    transform-origin: 0 100%;
 }
 
 @keyframes removed-item-animation {

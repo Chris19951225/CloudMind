@@ -627,14 +627,14 @@ $(document).ready(function(){
 });
 
 window.addEventListener('storage', function(event){
-    if (event.key == 'logout-event') {
+    if (event.key === 'logout-event') {
         localStorage.clear();
         window.location.href='index.php';
     }
 });
 
 window.addEventListener('storage', function(event){
-    if (event.key == 'login-event') {
+    if (event.key === 'login-event') {
         localStorage.clear();
         location.reload();
     }

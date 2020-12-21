@@ -42,7 +42,7 @@
             </ul>
             <span title="To Bottom"><button class="btn solid" id="bottom_post_button"><i class="fas fa-arrow-down"></i></button></span>
         </div>
-        <div class="row align-items-end text-box h-70" style="padding:10px; padding-left:5px;" >
+        <div class="row align-items-end text-box h-70" style="padding: 10px 10px 10px 5px;" >
             <div class="col-md-11 col-sm-11 col-lg-10">
                 <textarea class="post-placeholder" id="post_text" placeholder="What's on your mind?" maxlength="1000"></textarea>
             </div>
