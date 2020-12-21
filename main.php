@@ -44,7 +44,7 @@
         </div>
         <div class="row align-items-end text-box h-70" style="padding:10px; padding-left:5px;" >
             <div class="col-md-11 col-sm-11 col-lg-10">
-                <textarea class="post-placeholder" id="post_text" placeholder="What's on your mind? Add a drop to the cloud." maxlength="1000"></textarea>
+                <textarea class="post-placeholder" id="post_text" placeholder="What's on your mind?" maxlength="1000"></textarea>
             </div>
             <div class="col">
                 <button class="btn solid" id="post_btn">POST</button>

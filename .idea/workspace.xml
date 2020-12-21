@@ -19,15 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="12fc683e-8687-47bc-af90-945b699a8157" name="Default Changelist" comment="Moved onto index.html">
-      <change afterPath="$PROJECT_DIR$/Post.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/CloudMind.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CloudMind.iml" afterDir="false" />
+    <list default="true" id="12fc683e-8687-47bc-af90-945b699a8157" name="Default Changelist" comment="Completed version 1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/dataHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/main.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
@@ -130,7 +123,7 @@
       <workItem from="1607861525643" duration="19319000" />
       <workItem from="1607933705113" duration="36282000" />
       <workItem from="1608272251014" duration="27826000" />
-      <workItem from="1608449064831" duration="10028000" />
+      <workItem from="1608449064831" duration="14882000" />
     </task>
     <task id="LOCAL-00001" summary="changes to images, animations, transitions, spacing and more style things.">
       <created>1607504213586</created>
@@ -160,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607673454643</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Completed version 1">
+      <created>1608535381476</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1608535381476</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,7 +183,8 @@
     <MESSAGE value="Super responsive index page with no functionality" />
     <MESSAGE value="Done with Login Page" />
     <MESSAGE value="Moved onto index.html" />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved onto index.html" />
+    <MESSAGE value="Completed version 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Completed version 1" />
   </component>
   <component name="WindowStateProjectService">
     <state x="475" y="55" key="#PHP" timestamp="1607533995514">
@@ -230,6 +231,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="604" y="335" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1607934752394" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1608535420557">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1608535420557" />
     <state x="373" y="22" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1608280486867">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

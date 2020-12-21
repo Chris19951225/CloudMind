@@ -640,13 +640,12 @@ window.addEventListener('storage', function(event){
     }
 });
 
-
-/*$('#posts_container').scroll(function(){
+$('div').scroll(function(){
     ResumeTimerBool = false;
     setTimeout(function(){
         ResumeTimerBool = true;
     },10000);
-});*/
+});
 
 $('#bottom_post_button').click(function(){
     $("#posts_container").animate({
