@@ -67,12 +67,15 @@ class Post
         return false;
     }
 
-    function loadAllPosts($UnameStr = ''){
+    function loadAllPosts($UnameStr = '', $NumPostsInt = 0){
         $ConnStr = new mysqli($this->ServernameStr, $this->DBUsernameStr, $this->DBPassStr, $this->DBnameStr);
         if ($ConnStr->connect_error) {
             die("Connection failed: " . $ConnStr->connect_error);
         }
-        $SqlStr = "SELECT * FROM CloudMind.Posts WHERE 1";
+        $SqlStr = "SELECT * FROM CloudMind.Posts WHERE 1 ORDER BY PostId DESC";
+        if($NumPostsInt !== 0){
+            $SqlStr .= " LIMIT ". $NumPostsInt;
+        }
         $ResultStr = $ConnStr->query($SqlStr);
         $ArraySizeInt = 0;
         $PostsArray = array();
@@ -111,6 +114,24 @@ class Post
         }
 
         $SqlStr = "DELETE FROM CloudMind.Posts WHERE PostId=".$PostId;
+        if ($ConnStr->query($SqlStr) === TRUE) {
+            if ($ConnStr->affected_rows > 0) {
+                $ConnStr->close();
+                return true;
+            }
+        }
+        $ConnStr->close();
+        return false;
+    }
+
+    function deleteRelatedPosts($UserIdInt){
+        $ConnStr = new mysqli($this->ServernameStr, $this->DBUsernameStr, $this->DBPassStr, $this->DBnameStr);
+        // Check connection
+        if ($ConnStr->connect_error) {
+            die("Connection failed: " . $ConnStr->connect_error);
+        }
+
+        $SqlStr = "DELETE FROM CloudMind.Posts WHERE UserId=".$UserIdInt;
         if ($ConnStr->query($SqlStr) === TRUE) {
             if ($ConnStr->affected_rows > 0) {
                 $ConnStr->close();

@@ -19,36 +19,68 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <title>CloudMind</title>
     <link rel="icon" type="image/png" href="img/fav.PNG">
     <link rel="stylesheet" href="style.css" />
 </head>
-<body >
+<body>
 <div class="posts-page" id="main_div">
-    <div class="heading main-page">
+    <!--<div class="heading main-page">
         <h1 class="main-title"><i class="fas fa-cloud"></i>CloudMind</h1>
         <h3 id="main_logged_in_uname">Signed in: <?php echo $_SESSION['Username']?></h3>
     </div>
     <button type="button" class="btn solid user-icon" id="user_profile_btn" data-toggle="modal" data-target="#modal_profile">
         <span title="User Profile"><i class="fa fa-user ml-1"></i></span>
-    </button>
+    </button>-->
 
-    <div class="post-box col-md-10 h-80">
-        <div class="row posts-heading"><h2 class="title">Recent Posts</h2></div>
-        <div class="row align-items-center posts" id="posts_container">
-            <ul class="posts-list" id="posts_list">
-
-            </ul>
-            <span title="To Bottom"><button class="btn solid" id="bottom_post_button"><i class="fas fa-arrow-down"></i></button></span>
+    <div class="post-box col-md-10">
+        <!--<div class="row posts-heading"><h2 class="title">Recent Posts</h2></div>-->
+        <div class="row align-items-end" >
+            <div class="col-lg-4 col-md-3 col-sm-2">
+                <h1 class="main-title" style="margin:0;padding:0; text-align: start"><i class="fas fa-cloud"></i>CloudMind</h1>
+            </div>
+            <div class="col-lg-1 col-md-5 col-sm-1"></div>
+            <div class="col-lg-7 col-md-5 col-sm-5 justify-content-end">
+                <!--<div class="col">
+                    <h3 id="main_logged_in_uname">Signed in: <?php echo $_SESSION['Username']?></h3>
+                </div>-->
+                <div class="col">
+                    <button type="button" class="btn solid user-icon" id="user_profile_btn" style="margin:0; margin-top:10px;" data-toggle="modal" data-target="#modal_profile">
+                        <span title="User Profile"><i class="fa fa-user"></i></span>
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="row align-items-end text-box h-70" style="padding: 10px 10px 10px 5px;" >
-            <div class="col-md-11 col-sm-11 col-lg-10">
-                <textarea class="post-placeholder" id="post_text" placeholder="What's on your mind?" maxlength="1000"></textarea>
+        <div class="row align-items-end" style="padding: 10px 10px 10px 5px;" >
+            <div class="col-lg-11 col-md-10 col-sm-9">
+                <textarea class="post-placeholder" id="post_text" placeholder="What's on your mind? (Max:300 characters)" maxlength="300"></textarea>
             </div>
             <div class="col">
-                <button class="btn solid" id="post_btn">POST</button>
+                <button class="btn solid" id="post_btn" style="width:100%;">POST</button>
             </div>
+        </div>
+        <div class="row align-items-center posts" id="posts_container">
+            <button class="btn solid" id="new_posts_btn">New Posts!</button>
+            <ul class="posts-list" id="posts_list">
+                <li class="post-cont" id="post'+PostArray[i]['PostId']+'">
+                    <div class="grid-container">
+                        <div class="item2">
+                            <i class="post-img-holder fa fa-tint fa-2x mb-1"></i>
+                            <h2>Hris3</h2>
+                        </div>
+                        <div class="item3">
+                            <p class="post-text">"Some text that don't make sense"</p>
+                            <p style="color:white">the date all in pearly white</p>
+                        </div>
+                        <div class="item4"><span title="Delete Post?"><button class="btn solid delete-post">
+                            <i class="fas fa-trash"></i></button></span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <!--<span title="To Bottom"><button class="btn solid" id="bottom_post_button"><i class="fas fa-arrow-down"></i></button></span>-->
         </div>
     </div>
 
@@ -59,7 +91,13 @@
             <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <form action="" id="edit_info_form" class="edit-info-form">
-                    <h2 class="title">Edit Info</h2>
+                    <h2 class="title" style="margin-top:80%;">Edit Info</h2>
+                    <span><strong>Photo: </strong></span>
+                    <div id="user_pfp_container" style="text-align: center; margin-bottom: 20px; margin-top: 20px; position:relative;">
+                        <i class="fa fa-tint fa-5x mb-2 temp-photo" id="temp_photo_change"></i>
+                        <input type="file" id="image_input" hidden="hidden" accept="image/png, image/jpeg"/>
+                        <button type="button" class="upload-pfp" id="upload_photo_btn">Upload Photo</button>
+                    </div>
                     <span><strong>Names: </strong></span>
                     <div class="input-field">
                         <i class="fas fa-signature"></i>
@@ -95,18 +133,25 @@
                     </div>
                     <div>
                         <button type="button" class="btn solid" id="save_info_btn">Save</button>
-                        <button type="button" class="btn solid" id="info_back_btn" >Back</button>
+                        <button type="button" class="btn solid" id="info_back_btn" >Cancel</button>
                     </div>
                         <button type="button" class="btn solid" id="pre_user_delete_btn" style="background-color:red;">Delete User</button>
                 </form>
-                <div class="modal fade" id="delete_modal" role="dialog" data-backdrop="false">
+                <div class="modal fade delete-modal" id="delete_modal" role="dialog" data-backdrop="false">
                     <div class="modal-dialog">
                         <!-- Modal content-->
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <i class="fa fa-tint fa-3x mb-2"></i>
-                                <p class="user-name">Delete <?php echo $_SESSION['Username']?></p>
+                            <div class="modal-header delete-modal-header" id="info_modal_header">
+                                <button type="button" class="close" data-dismiss="modal" style="position:absolute;">&times;</button>
+                                <div class="justify-content-center" style="text-align: center; margin: 0 auto; padding:10px">
+                                    <div id="delete_photo_div" class="delete_photo_div">
+
+                                    </div>
+                                    <div id="delete_photo_div"></div>
+                                    <i class="fa fa-tint fa-3x mb-2 temp-photo" id="temp_photo_delete" style="margin:30px;"></i>
+                                    <p class="user-name">Delete <?php echo $_SESSION['Username']?></p>
+                                </div>
+
                             </div>
                             <div class="modal-body justify-content-center">
                                 <p class="sure">Are you sure?</p>
@@ -118,8 +163,7 @@
                             </div>
                             <div class="modal-footer justify-content-center">
                                 <div>
-                                    <button type="button" class="btn solid" id="delete_user_btn"
-                                            style="background-color:red;">Delete</button>
+                                    <button type="button" class="btn solid" id="delete_user_btn" style="background-color:red;">Delete</button>
                                     <button type="button" class="btn solid" id="delete_back_btn" data-toggle="modal"
                                             data-target="#delete_modal">Cancel</button>
                                 </div>
@@ -129,10 +173,15 @@
                     </div>
                 </div>
                 <!--Header-->
-                <div id="user_info_modal">
+                <div id="user_info_modal" >
                     <div class="modal-header">
-                        <i class="fa fa-tint fa-3x mb-2"></i>
-                        <p class="user-name" id="modal_uname"><?php echo $_SESSION['Username']?></p>
+                        <div class="justify-content-center" style="text-align: center; margin: 0 auto; padding:10px">
+                            <div id="info_photo_div" class="info_photo_div">
+
+                            </div>
+                            <i class="fa fa-tint fa-3x mb-2" id="temp_photo_info"></i>
+                            <p class="user-name header-elem" id="modal_uname"><?php echo $_SESSION['Username']?></p>
+                        </div>
                     </div>
 
                     <!--Body-->

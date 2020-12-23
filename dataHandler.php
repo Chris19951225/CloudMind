@@ -18,30 +18,23 @@ function deleteOldData(){
             $TempPost->deletePost($PostId);
         }
     }
-
-    $TempUser = new User();
-    $DeletedUsersArray = $TempUser->loadAllDeletedUsers();
-    $CantDeleteBool = false;
-    foreach($DeletedUsersArray as $IdInt){
-        foreach($PostsArray as $Post) {
-            if($Post['UserId'] === $IdInt){
-                $CantDeleteBool = true;
-            }
-        }
-
-        if($CantDeleteBool){
-            $CantDeleteBool = false;
-        }else{
-            $TempUser->deleteUserPerm($IdInt);
-        }
+}
+function generateRandomString($length = 10) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%&';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
     }
+    return $randomString;
 }
 
 //Login, Register, Recover Functions**************************************************************************
 function recEmail($EmailStr){
     $TempUser = new User();
+
     if($TempUser->loadUserThroughEmail($EmailStr)){
-        $RecoverCodeStr = sprintf("%06d", mt_rand(1, 999999));
+        $RecoverCodeStr = generateRandomString(16);
         $SubjectStr = 'CloudMind Recovery Email';
         $BodyStr = 'Hi, ' . $TempUser->getFname() . ' ' . $TempUser->getLname().',
                     Your Username is: ' . $TempUser->getUname() . '
@@ -55,6 +48,7 @@ function recEmail($EmailStr){
             ];
             $RecoverCodeStrHash = password_hash($RecoverCodeStr, PASSWORD_BCRYPT, $options);
             $TempUser->setRecCode($RecoverCodeStrHash);
+            $TempUser->setState(0);
             echo 'Success';
         } else {
             echo 'Failed';
@@ -67,30 +61,27 @@ function recEmail($EmailStr){
 function confirmLogin($UsernameStr,$PasswordStr){
     $User = new User();
     if ($User->loadUser($UsernameStr)) {
-        if($User->getState() === 'Blocked'){
+        if(!$User->getState()){
             if(password_verify($PasswordStr, $User->getRecCode())){
                 $User->setPassAtt(0);
                 echo 'Recovered';
             }else{
                 echo 'Recovery Failed';
             }
-        }else if ($User->getState() === 'Deleted'){
-            echo 'Nonexistent';
-        }else{
+        } else{
             if(password_verify($PasswordStr, $User->getPassword())){
                 $User->setPassAtt(0);
                 $_SESSION['Username'] = $UsernameStr;
                 $_SESSION['Firstname'] = $User->getFname();
                 $_SESSION['Lastname'] = $User->getLname();
                 $_SESSION['Email'] = $User->getEmail();
-            }
-            else{
+            } else{
                 $CurrAttempts = $User->getPassAtt() + 1;
                 if($CurrAttempts < 3) {
                     $User->setPassAtt($CurrAttempts);
                     echo 'Wrong-Password '.$CurrAttempts;
                 }else{
-                    $User->setState('Blocked');
+                    $User->setState(0);
                     echo 'Blocked';
                 }
             }
@@ -122,6 +113,10 @@ function confirmRegister($FnameStr,$LnameStr,$EmailStr,$UnameStr,$PassStr)
 function deleteUser(){
     $User = new User();
     $User->loadUser($_SESSION['Username']);
+    $UserIdInt = $User->getUserId();
+    $TempPost = new Post();
+    $TempPost->deleteRelatedPosts($UserIdInt);
+
     if($User->deleteUser()) {
         echo 'Deleted';
     }else{
@@ -154,9 +149,9 @@ function addPost($PostStr){
     }
 }
 
-function loadAllPosts(){
+function loadAllPosts($NumPostsInt){
     $NewPost = new Post();
-    $PostArray = $NewPost->loadAllPosts($_SESSION['Username']);
+    $PostArray = $NewPost->loadAllPosts($_SESSION['Username'],$NumPostsInt);
     echo json_encode($PostArray);
 }
 //Update User Functions *************************************************************************************
@@ -172,7 +167,7 @@ function confirmCurrPass($CurrPassStr){
             $User->setPassAtt($CurrAttempts);
             echo 'No '. $CurrAttempts;
         } else {
-            $User->setState('Blocked');
+            $User->setState(0);
             echo 'Blocked';
             $_SESSION = array();
             die();
@@ -260,7 +255,7 @@ function changePass($PassStr,$UnameStr = ''){
     }
 
     if ($User->setPassword($PassStr)) {
-        $User->setState('Valid');
+        $User->setState(1);
         echo 'Changed';
     } else {
         echo 'Failed';
@@ -268,10 +263,11 @@ function changePass($PassStr,$UnameStr = ''){
 }
 
 //Start Session*********************************************************************************************
-if(isset($_POST['session'])){
+if(isset($_POST['num_posts'])){
     deleteOldData();
-    loadAllPosts();
-    unset($_POST['session']);
+    $NumPostsInt = $_POST['num_posts'];
+    loadAllPosts($NumPostsInt);
+    unset($_POST['num_posts']);
 }
 
 //Recover Info Function *************************************************************************************
@@ -383,4 +379,25 @@ if(isset($_POST['logout']))
     echo $_SESSION['Username'];
     $_SESSION = array();
     session_destroy();
+}
+
+//Change Image Name*************************************************************************************
+if(isset($_POST['old_img_name'])){
+    $OldNameStr = $_POST['old_img_name'];
+    if(file_exists('img/'.$OldNameStr.'.png')){
+        rename('img/'.$OldNameStr.'.png', 'img/'.$_SESSION['Username'].'.png');
+    }else if(file_exists('img/'.$OldNameStr.'.jpg')) {
+        rename('img/'.$OldNameStr.'.jpg', 'img/'.$_SESSION['Username'].'.jpg');
+    }
+    unset($_POST['old_img_name']);
+}
+
+//Check Image Exists ***********************************************************************************
+if(isset($_POST['img_exists'])){
+    if(file_exists('img/'.$_SESSION['Username'].'.png')){
+        echo 'PNG';
+    }else if(file_exists('img/'.$_SESSION['Username'].'.jpg')) {
+        echo 'JPG';
+    }
+    unset($_POST['img_exists']);
 }

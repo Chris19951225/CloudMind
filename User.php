@@ -214,12 +214,12 @@ class User
         return false;
     }
 
-    function setState($StateStr){
+    function setState($StateBool){
         $ConnStr = new mysqli($this->ServernameStr, $this->DBUsernameStr, $this->DBPassStr, $this->DBnameStr);
         if ($ConnStr->connect_error) {
             die('Connection failed: ' . $ConnStr->connect_error);
         }
-        $SqlStr = "UPDATE CloudMind.Users SET State='" . $StateStr ."' WHERE Username='".$this->UnameStr."'";
+        $SqlStr = "UPDATE CloudMind.Users SET State='" . $StateBool ."' WHERE Username='".$this->UnameStr."'";
         if ($ConnStr->query($SqlStr) === TRUE) {
             if ($ConnStr->affected_rows > 0) {
                 $ConnStr->close();
@@ -341,8 +341,7 @@ class User
             die('Connection failed: ' . $ConnStr->connect_error);
         }
 
-        $SqlStr = "UPDATE CloudMind.Users SET State='Deleted', EmailAddress='',
-                    FirstName='', LastName='', Password='' WHERE Username='".$this->UnameStr."'";
+        $SqlStr = "DELETE FROM CloudMind.Users WHERE Username='".$this->UnameStr."'";
 
         if ($ConnStr->query($SqlStr) === TRUE) {
             if ($ConnStr->affected_rows > 0) {

@@ -33,11 +33,11 @@ CHANGE_PASS_CANCEL_BTN.addEventListener('click', () => {
 });
 
 //Sign-in Events **********************************************************************
-document.getElementById('login_uname').onkeydown = function () {
+document.getElementById('login_uname').onkeyup = function () {
     setValid(document.getElementById('login_uname'));
 }
 
-document.getElementById('login_pass').onkeydown = function () {
+document.getElementById('login_pass').onkeyup = function () {
     setValid(document.getElementById('login_pass'));
 }
 
@@ -53,20 +53,77 @@ document.getElementById('sign_in_form').onsubmit = function (e) {
 }
 
 //Sign-up Event **********************************************************************
-document.getElementById('reg_uname').onkeydown = function () {
-    setValid(document.getElementById('reg_uname'));
+document.getElementById('reg_fname').onkeyup = function () {
+    let RegFnameInput = document.getElementById('reg_fname');
+    let RegFnameStr = RegFnameInput.value.toString().trim();
+    if(RegFnameStr === ''){
+        setValid(RegFnameInput);
+    }else{
+        setChanged(RegFnameInput, '');
+    }
 }
 
-document.getElementById('reg_email').onkeydown = function () {
-    setValid(document.getElementById('reg_email'));
+document.getElementById('reg_lname').onkeyup = function () {
+    let RegLnameInput = document.getElementById('reg_lname');
+    let RegLnameStr = RegLnameInput.value.toString().trim();
+    if(RegLnameStr === ''){
+        setValid(RegLnameInput);
+    }else{
+        setChanged(RegLnameInput, '');
+    }
 }
 
-document.getElementById('reg_pass').onkeydown = function () {
-    setValid(document.getElementById('reg_pass'));
+document.getElementById('reg_uname').onkeyup = function () {
+    let RegUnameInput = document.getElementById('reg_uname');
+    let RegUnameStr = RegUnameInput.value.toString().trim();
+    if(RegUnameStr === ''){
+        setValid(RegUnameInput);
+    }else{
+        setChanged(RegUnameInput, '');
+    }
 }
 
-document.getElementById('reg_pass_conf').onkeydown = function () {
-    setValid(document.getElementById('reg_pass_conf'));
+document.getElementById('reg_email').onkeyup = function () {
+    let RegEmailInput = document.getElementById('reg_email');
+    let RegEmailStr = RegEmailInput.value.toString().trim();
+
+    if(RegEmailStr === ''){
+      setValid(RegEmailInput);
+    } else if(!EMAIL_EXP.test(RegEmailStr)){
+        setInvalid(RegEmailInput, 'Please type in email correctly (with an address and \'@\' and \'.domain\'');
+    }else{
+        setChanged(RegEmailInput, '');
+    }
+}
+
+document.getElementById('reg_pass').onkeyup = function () {
+    let RegPassInput = document.getElementById('reg_pass');
+    let RegPassStr = RegPassInput.value.toString();
+
+    if(RegPassStr === ''){
+        setValid(RegPassInput);
+    } else if(!PASS_EXP.test(RegPassStr)) {
+        setInvalid(RegPassInput, 'Password is too weak (must be at least 8 characters long with an uppercase,' +
+            ' lowercase, special character and number)');
+    }else {
+        setChanged(RegPassInput, '');
+    }
+
+}
+
+document.getElementById('reg_pass_conf').onkeyup = function () {
+    let RegPassInput = document.getElementById('reg_pass');
+    let RegPassConfInput = document.getElementById('reg_pass_conf');
+    let RegPassStr = RegPassInput.value.toString();
+    let RegPassConfStr = RegPassConfInput.value.toString();
+
+    if(RegPassConfStr === ''){
+        setValid(RegPassConfInput);
+    }else if(RegPassConfStr !== RegPassStr){
+        setInvalid(RegPassConfInput, 'Confirmation password not matching');
+    }else{
+        setChanged(RegPassConfInput, '');
+    }
 }
 
 document.getElementById('sign_up_form').onsubmit = function (e) {
@@ -86,39 +143,62 @@ document.getElementById('sign_up_form').onsubmit = function (e) {
     let RegPassStr = RegPassInput.value.toString();
     let RegPassConfStr = RegPassConfInput.value.toString();
 
-    if(!EMAIL_EXP.test(RegEmailStr)){
-        setInvalid(RegEmailInput,'Please type in email correctly');
-    }else if(!PASS_EXP.test(RegPassStr)){
-        setInvalid(RegPassInput, 'Password is too weak (must be at least 8 characters long with an uppercase,' +
-            ' lowercase, special character and number)');
-    }else if(RegPassStr !== RegPassConfStr){
-        setInvalid(RegPassInput,'Password does not match');
+    if(EMAIL_EXP.test(RegEmailStr) && PASS_EXP.test(RegPassStr) && RegPassStr === RegPassConfStr) {
+        sendDataReg(RegFnameStr, RegLnameStr, RegEmailStr, RegUnameStr, RegPassStr);
     }
-    else sendDataReg(RegFnameStr, RegLnameStr, RegEmailStr, RegUnameStr, RegPassStr);
 }
 //Recover Info Event **********************************************************************
-document.getElementById('recover_email_input').onkeydown = function () {
-    setValid(document.getElementById('recover_email_input'));
+document.getElementById('recover_email_input').onkeyup = function () {
+    let EmailInput = document.getElementById('recover_email_input');
+    let EmailStr = EmailInput.value.toString().trim();
+
+    if(EmailStr === ''){
+        setValid(EmailInput);
+    }else if(!EMAIL_EXP.test(EmailStr)) {
+        setInvalid(EmailInput,'Please type in email correctly (with an address and \'@\' and \'.domain\'');
+    }else{
+        setChanged(EmailInput, '')
+    }
 }
 
 document.getElementById('recover_form').onsubmit = function (e) {
     e.preventDefault();
     let EmailInput = document.getElementById('recover_email_input');
     let EmailStr = EmailInput.value.toString().trim();
+
     if(EMAIL_EXP.test(EmailStr)){
         $("body").css("cursor", "progress");
         sendDataRecover(EmailStr);
-    }else{
-        setInvalid(EmailInput,'Please type in email correctly');
     }
 }
 
-//Chage Password Event ***************************************************************************
-document.getElementById('change_pass').onkeydown = function () {
-    setValid(document.getElementById('change_pass'));
+//Change Password Event ***************************************************************************
+document.getElementById('change_pass').onkeyup = function () {
+    let ChangePassInput = document.getElementById('change_pass');
+    let ChangePassStr = ChangePassInput.value.toString();
+
+    if(ChangePassStr === ''){
+        setValid(ChangePassInput);
+    } else if(!PASS_EXP.test(ChangePassStr)) {
+        setInvalid(ChangePassInput, 'Password is too weak (must be at least 8 characters long with an uppercase,' +
+            ' lowercase, special character and number)');
+    }else {
+        setChanged(ChangePassInput, '');
+    }
 }
-document.getElementById('change_pass_conf').onkeydown = function () {
-    setValid(document.getElementById('change_pass_conf'));
+document.getElementById('change_pass_conf').onkeyup = function () {
+    let ChangePassInput = document.getElementById('change_pass');
+    let ChangePassStr = ChangePassInput.value.toString();
+    let ChangePassConfInput = document.getElementById('change_pass_conf');
+    let ChangePassConfStr = ChangePassConfInput.value.toString();
+
+    if(ChangePassConfStr === ''){
+        setValid(ChangePassConfInput);
+    }else if(ChangePassStr !== ChangePassConfStr){
+        setInvalid(ChangePassConfInput, 'Confirmation password not matching');
+    }else{
+        setChanged(ChangePassConfInput,'');
+    }
 }
 
 document.getElementById('change_pass_form').onsubmit = function (e) {
@@ -128,17 +208,10 @@ document.getElementById('change_pass_form').onsubmit = function (e) {
     let ChangePassConfInput = document.getElementById('change_pass_conf');
     let ChangePassConfStr = ChangePassConfInput.value.toString();
 
-    if(!PASS_EXP.test(ChangePassStr)) {
-        setInvalid(ChangePassInput, 'Password is too weak (must be at least 8 characters long with an uppercase,' +
-            ' lowercase, special character and number)');
-    }else if(ChangePassStr !== ChangePassConfStr){
-        setInvalid(ChangePassInput, '');
-        setInvalid(ChangePassConfInput, 'Passwords do not match');
-    }else{
+    if(PASS_EXP.test(ChangePassStr) && ChangePassStr === ChangePassConfStr){
         let UnameStr = document.getElementById('login_uname').value.toString().trim();
         sendDataChangePass(UnameStr,ChangePassStr);
     }
-
 }
 
 //Get Data from dataHandler **********************************************************************
@@ -150,7 +223,7 @@ function getData(TypeStr, OutputStr){
         if (OutputStr.includes('Wrong-Password')) {
             setInvalid(PasswordInput, 'Password is incorrect, Attempts left: ' + (3-parseInt(OutputStr.charAt(OutputStr.length-1))).toString());
         }else if(OutputStr === 'Nonexistent'){
-            setInvalid(UsernameInput, 'User does not exist');
+            setInvalid(UsernameInput, 'User not registered');
         }else if(OutputStr === 'Blocked'){
             setInvalid(UsernameInput, 'Password failed more than 3 times, User has been blocked. Please use ' +
                 'the "Forgot Password or Username" recovery option');
@@ -172,13 +245,17 @@ function getData(TypeStr, OutputStr){
         let RegEmailInput = document.getElementById('reg_email');
 
         if (OutputStr === 'Username Exists'){
-            setInvalid(RegUnameInput, 'Username already exists');
+            setInvalid(RegUnameInput, 'Cannot use this Username. Please try another one.');
         }else if(OutputStr === 'Email Exists'){
-            setInvalid(RegEmailInput, 'Email already exists');
+            setInvalid(RegEmailInput, 'Cannot use this Email. Please try another.');
         }
         else{
-            alert('User Registered');
-            location.reload();
+            Swal.fire('You\'ve been registered!',
+                'Go ahead and log in!',
+                'success'
+            ).then((result) => {
+                location.reload();
+            });
         }
     }
 
@@ -186,14 +263,19 @@ function getData(TypeStr, OutputStr){
         let RecEmailInput = document.getElementById('recover_email_input');
 
         if(OutputStr === 'Does not exist'){
-            setInvalid(RecEmailInput, 'Sorry, Email does not exist');
+            setInvalid(RecEmailInput, 'Sorry, Email is not registered');
         }else if(OutputStr === 'Failed'){
             setInvalid(RecEmailInput, 'Sorry, failed to send to given Email');
         }else{
             setChanged(RecEmailInput,'');
             $("body").css("cursor", "default");
-            alert('An Email with your recovery information has been sent to ' + RecEmailInput.value.toString());
-            location.reload();
+            Swal.fire({
+                icon: 'info',
+                title: 'Email Sent',
+                text: 'You should receive new login info at '+ RecEmailInput.value.toString()
+            }).then((result) => {
+                location.reload();
+            });
         }
     }
 
@@ -203,11 +285,18 @@ function getData(TypeStr, OutputStr){
             let ChangePassConfInput = document.getElementById('change_pass_conf');
             setChanged(ChangePassInput,'');
             setChanged(ChangePassConfInput,'');
-            alert('Your password has been changed');
-            location.reload();
+            Swal.fire('Password changed!',
+                'You can now log in with your new password',
+                'success'
+            ).then((result) => {
+                location.reload();
+            })
         }else{
-            alert('Sorry, something went wrong server side and we could not change your password. Please wait a bit' +
-                ' and try again.');
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Sorry, something went wrong server side and we could not change your password. Please wait a bit and try again.'
+            });
         }
     }
 }

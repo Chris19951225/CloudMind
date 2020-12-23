@@ -19,9 +19,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="12fc683e-8687-47bc-af90-945b699a8157" name="Default Changelist" comment="Fixed scroll reloading">
+    <list default="true" id="12fc683e-8687-47bc-af90-945b699a8157" name="Default Changelist" comment="Cleaning up warnings">
+      <change afterPath="$PROJECT_DIR$/upload.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/Post.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/dataHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/main.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
@@ -72,7 +77,7 @@
       <recent name="C:\Users\hrist\PhpstormProjects\CloudMind\img" />
     </key>
   </component>
-  <component name="RunManager" selected="PHP Script.dataHandler.php">
+  <component name="RunManager" selected="PHP Script.Post.php">
     <configuration name="EmailTest.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/EmailTest.php">
       <method v="2" />
     </configuration>
@@ -90,8 +95,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="PHP Script.dataHandler.php" />
         <item itemvalue="PHP Script.Post.php" />
+        <item itemvalue="PHP Script.dataHandler.php" />
         <item itemvalue="PHP Script.Test.php" />
         <item itemvalue="PHP Script.User.php" />
         <item itemvalue="PHP Script.EmailTest.php" />
@@ -124,7 +129,9 @@
       <workItem from="1607861525643" duration="19319000" />
       <workItem from="1607933705113" duration="36282000" />
       <workItem from="1608272251014" duration="27826000" />
-      <workItem from="1608449064831" duration="15222000" />
+      <workItem from="1608449064831" duration="52750000" />
+      <workItem from="1608649328876" duration="2166000" />
+      <workItem from="1608651513672" duration="21522000" />
     </task>
     <task id="LOCAL-00001" summary="changes to images, animations, transitions, spacing and more style things.">
       <created>1607504213586</created>
@@ -168,7 +175,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608540250562</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Cleaning up warnings">
+      <created>1608540586105</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1608540586105</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,7 +207,8 @@
     <MESSAGE value="Moved onto index.html" />
     <MESSAGE value="Completed version 1" />
     <MESSAGE value="Fixed scroll reloading" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed scroll reloading" />
+    <MESSAGE value="Cleaning up warnings" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaning up warnings" />
   </component>
   <component name="WindowStateProjectService">
     <state x="475" y="55" key="#PHP" timestamp="1607533995514">
@@ -204,6 +219,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="194" y="253" key="#SQL_Dialects/0.0.1536.824@0.0.1536.824" timestamp="1608540442437" />
+    <state x="539" y="214" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1608641649329">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="539" y="214" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1608641649329" />
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1607503304077">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -220,30 +239,34 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="579" y="117" key="Github.UntrackedFilesDialog/0.0.1536.824@0.0.1536.824" timestamp="1607497935857" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1608449049071">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1608708511725">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1608449049071" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1608449049071">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1608708511725" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1608708511725">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1608449049071" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1608449049070">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1608708511725" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1608708511725">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1608449049070" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1608449049071">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1608708511725" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1608708511725">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1608449049071" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1608708511725" />
     <state x="558" y="135" key="NewPhpClassDialog" timestamp="1607582913530">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="558" y="135" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1607582913530" />
-    <state x="604" y="335" key="NewPhpFileDialog" timestamp="1607934752394">
+    <state x="604" y="335" key="NewPhpFileDialog" timestamp="1608641272425">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="604" y="335" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1607934752394" />
+    <state x="604" y="335" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1608641272425" />
+    <state x="565" y="114" key="RollbackChangesDialog" timestamp="1608557624290">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="565" y="114" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1608557624290" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1608535420557">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -252,14 +275,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="373" y="22" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1608280486867" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608557586965">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1608557586965" />
+    <state x="410" y="139" width="700" height="530" key="recent.locations.popup" timestamp="1608617244171">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="410" y="139" width="700" height="530" key="recent.locations.popup/0.0.1536.824@0.0.1536.824" timestamp="1608617244171" />
     <state x="590" y="183" key="refactoring.ChangeSignatureDialog" timestamp="1607930201158">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="590" y="183" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1607930201158" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1608455355884">
+    <state x="425" y="187" key="run.anything.popup" timestamp="1608647877954">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1608455355884" />
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1608647877954" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1608188581369">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
