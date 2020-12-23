@@ -152,6 +152,17 @@ function addPost($PostStr){
 function loadAllPosts($NumPostsInt){
     $NewPost = new Post();
     $PostArray = $NewPost->loadAllPosts($_SESSION['Username'],$NumPostsInt);
+    $CurrPost = 0;
+    foreach($PostArray as $Post){
+        if(file_exists('img/'.$Post['Username'].'.png')){
+            $PostArray[$CurrPost]['Image'] = $Post['Username'].'.png';
+        }else if(file_exists('img/'.$Post['Username'].'.jpg')) {
+            $PostArray[$CurrPost]['Image'] = $Post['Username'].'.jpg';
+        }else{
+            $PostArray[$CurrPost]['Image'] = 'none';
+        }
+        $CurrPost++;
+    }
     echo json_encode($PostArray);
 }
 //Update User Functions *************************************************************************************

@@ -15,6 +15,9 @@ const PASS_EXP = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})
 
 let UsernameStr = '';
 let NumPosts = 5;
+let ImgExists = false;
+let ImgName = '';
+
 window.onload = (ev => {
    sendLoadPosts(NumPosts);
    UsernameStr = document.getElementById('change_uname').placeholder;
@@ -348,7 +351,9 @@ function updateData(){
                 Swal.fire('Image changed!',
                     php_script_response,
                     'success'
-                )
+                ).then((result) => {
+                    document.getElementById('conf_current_pass').value = '';
+                });
             }
         });
     }
@@ -394,13 +399,24 @@ function postReturn(PostIdStr){
         let newLi = document.createElement('li');
         newLi.className = 'post-cont new-item';
         newLi.id = 'post'+PostIdStr;
-        newLi.innerHTML = '<div class="col"><i class="fa fa-tint fa-2x mb-1"></i>'+
-            '<h2>'+UsernameStr+'</h2></div>'+
-            '<p class="post-text">"'+PostTextStr+'"</p>'+
-            '<p style="color:white">'+CurrDateTime.toISOString().split('T')[0]+' '
-            +CurrDateTime.toISOString().split('T')[1].slice(0,-5)+'</p>'+
-            '</div><span title="Delete Post?"><button class="btn solid delete-post">' +
-            '<i class="fas fa-trash"></i></span></button>';
+        if(ImgExists){
+            newLi.innerHTML = '<div class="col"><img class="user-pfp" src="'+ImgName+'" alt="User Image">'+
+                '<h2>'+UsernameStr+'</h2></div>'+
+                '<p class="post-text">"'+PostTextStr+'"</p>'+
+                '<p>'+CurrDateTime.toISOString().split('T')[0]+' '
+                +CurrDateTime.toISOString().split('T')[1].slice(0,-5)+'</p>'+
+                '</div><span title="Delete Post?"><button class="btn solid delete-post">' +
+                '<i class="fas fa-trash"></i></span></button>';
+        }else{
+            newLi.innerHTML = '<div class="col"><i class="fa fa-tint fa-2x mb-1"></i>'+
+                '<h2>'+UsernameStr+'</h2></div>'+
+                '<p class="post-text">"'+PostTextStr+'"</p>'+
+                '<p>'+CurrDateTime.toISOString().split('T')[0]+' '
+                +CurrDateTime.toISOString().split('T')[1].slice(0,-5)+'</p>'+
+                '</div><span title="Delete Post?"><button class="btn solid delete-post">' +
+                '<i class="fas fa-trash"></i></span></button>';
+        }
+
         PostsList.prepend(newLi);
         NumPosts++;
         PostInput.value = '';
@@ -416,20 +432,39 @@ function loadAllPosts(PostJson){
     PostsList.innerHTML = '';
     for(let i in PostArray){
         if(PostArray[i]['Belongs'] === 'Yes'){
-            PostsList.innerHTML += '<li class="post-cont" id="post'+PostArray[i]['PostId']+'">' +
-                '<i class="post-img-holder fa fa-tint fa-2x mb-1"></i>'+
-                '<h2>'+PostArray[i]['Username']+'</h2>'+
-                '<p class="post-text">'+'"'+PostArray[i]['PostText']+'"'+'</p>'+
-                '<p style="color:white">'+PostArray[i]['PostTimeStamp']+'</p>'+
-                '<span title="Delete Post?"><button class="btn solid delete-post">' +
-                '<i class="fas fa-trash"></i></button></span></li>';
+            if(PostArray[i]['Image'] !== 'none'){
+                PostsList.innerHTML += '<li class="post-cont" id="post'+PostArray[i]['PostId']+'">' +
+                    '<img class="user-pfp" src="img/'+PostArray[i]['Image']+'" alt="User Image">'+
+                    '<h2>'+PostArray[i]['Username']+'</h2>'+
+                    '<p class="post-text">'+'"'+PostArray[i]['PostText']+'"'+'</p>'+
+                    '<p class="date">'+PostArray[i]['PostTimeStamp']+'</p>'+
+                    '<span title="Delete Post?"><button class="btn solid delete-post">' +
+                    '<i class="fas fa-trash"></i></button></span></li>';
+            }else{
+                PostsList.innerHTML += '<li class="post-cont" id="post'+PostArray[i]['PostId']+'">' +
+                    '<i class="post-img-holder fa fa-tint fa-2x mb-1"></i>'+
+                    '<h2>'+PostArray[i]['Username']+'</h2>'+
+                    '<p class="post-text">'+'"'+PostArray[i]['PostText']+'"'+'</p>'+
+                    '<p class="date">'+PostArray[i]['PostTimeStamp']+'</p>'+
+                    '<span title="Delete Post?"><button class="btn solid delete-post">' +
+                    '<i class="fas fa-trash"></i></button></span></li>';
+            }
         }else{
-            PostsList.innerHTML += '<li class="post-cont" id="post'+PostArray[i]['PostId']+'"><div class="post">' +
-                '<i class="fa fa-tint fa-2x mb-1"></i>'+
-                '<h2>'+PostArray[i]['Username']+'</h2>'+
-                '<p class="post-text">'+'"'+PostArray[i]['PostText']+'"'+'</p>'+
-                '<p style="color:white">'+PostArray[i]['PostTimeStamp']+'</p>'+
-                '</div>';
+            if(PostArray[i]['Image'] !== 'none'){
+                PostsList.innerHTML += '<li class="post-cont" id="post'+PostArray[i]['PostId']+'">' +
+                    '<img class="user-pfp" src="img/'+PostArray[i]['Image']+'" alt="User Image">'+
+                    '<h2>'+PostArray[i]['Username']+'</h2>'+
+                    '<p class="post-text">'+'"'+PostArray[i]['PostText']+'"'+'</p>'+
+                    '<p class="date">'+PostArray[i]['PostTimeStamp']+'</p>'+
+                    '</li>';
+            }else{
+                PostsList.innerHTML += '<li class="post-cont" id="post'+PostArray[i]['PostId']+'">' +
+                    '<i class="fa fa-tint fa-2x mb-1"></i>'+
+                    '<h2>'+PostArray[i]['Username']+'</h2>'+
+                    '<p class="post-text">'+'"'+PostArray[i]['PostText']+'"'+'</p>'+
+                    '<p class="date">'+PostArray[i]['PostTimeStamp']+'</p>'+
+                    '</li>';
+            }
         }
 
     }
@@ -453,31 +488,42 @@ function getData(TypeStr, OutputStr){
 
     if(TypeStr === 'ImgExists'){
         if(OutputStr === 'PNG'){
+            ImgExists = true;
             let ImageHolder = document.getElementById('temp_photo_change');
             ImageHolder.style.display = 'none';
             let ImageContainer = document.getElementById('user_pfp_container');
             let newImage = document.createElement("img");
             newImage.src= 'img/'+UsernameStr+'.png';
+            ImgName = 'img/'+UsernameStr+'.png'
             newImage.setAttribute("class", "user-pfp");
             ImageContainer.appendChild(newImage);
             UPLOAD_PHOTO_BTN.style.left = '0';
             UPLOAD_PHOTO_BTN.style.top = '0';
 
-            /*let InfoImgHolder = document.getElementById('temp_photo_info');
+            let InfoImgHolder = document.getElementById('temp_photo_info');
             InfoImgHolder.style.display = 'none';
             let DeleteImgHolder = document.getElementById('temp_photo_delete');
             DeleteImgHolder.style.display = 'none';
-            let InfoHeader = document.getElementById('info_modal_header');
-            InfoHeader.appendChild(newImage);
-            let DeleteHeader = document.getElementById('delete_modal_header');
-            DeleteHeader.appendChild(newImage);*/
+
+            let InfoPhotoDiv = document.getElementById('info_photo_div');
+            newImage = document.createElement('img');
+            newImage.src= 'img/'+UsernameStr+'.png';
+            newImage.setAttribute("class", "user-pfp");
+            InfoPhotoDiv.prepend(newImage);
+            let DeletePhotoDiv = document.getElementById('delete_photo_div');
+            newImage = document.createElement('img');
+            newImage.src= 'img/'+UsernameStr+'.png';
+            newImage.setAttribute("class", "user-pfp");
+            DeletePhotoDiv.prepend(newImage);
 
         }else if(OutputStr === 'JPG'){
+            ImgExists = true;
             let ImageHolder = document.getElementById('temp_photo_change');
             ImageHolder.style.display = 'none';
             let ImageContainer = document.getElementById('user_pfp_container');
             let newImage = document.createElement("img");
             newImage.src= 'img/'+UsernameStr+'.jpg';
+            ImgName = 'img/'+UsernameStr+'.jpg';
             newImage.setAttribute("class", "user-pfp");
             ImageContainer.appendChild(newImage);
             UPLOAD_PHOTO_BTN.style.left = '0';
@@ -643,6 +689,7 @@ function getData(TypeStr, OutputStr){
 }
 
 //Send Data Functions****************************************************************************************
+
 function checkImgExists(){
     $.ajax({
         url: 'dataHandler.php',
@@ -881,15 +928,12 @@ window.addEventListener('storage', function(event){
     }
 });
 
-$('div').scroll(function(){
+let ScrollPause = false;
+document.getElementById('posts_container').addEventListener('scroll', function(){
     ResumeTimerBool = false;
     setTimeout(function(){
         ResumeTimerBool = true;
     },10000);
-});
-
-let ScrollPause = false;
-document.getElementById('posts_container').addEventListener('scroll', function(){
     let ScrollCurrent = document.getElementById('posts_container').scrollTop;
     let ScrollHeight = document.getElementById('posts_container').scrollHeight;
     if(!ScrollPause){

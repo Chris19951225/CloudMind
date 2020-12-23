@@ -27,58 +27,32 @@
 </head>
 <body>
 <div class="posts-page" id="main_div">
-    <!--<div class="heading main-page">
-        <h1 class="main-title"><i class="fas fa-cloud"></i>CloudMind</h1>
-        <h3 id="main_logged_in_uname">Signed in: <?php echo $_SESSION['Username']?></h3>
-    </div>
-    <button type="button" class="btn solid user-icon" id="user_profile_btn" data-toggle="modal" data-target="#modal_profile">
-        <span title="User Profile"><i class="fa fa-user ml-1"></i></span>
-    </button>-->
-
     <div class="post-box col-md-10">
         <!--<div class="row posts-heading"><h2 class="title">Recent Posts</h2></div>-->
         <div class="row align-items-end" >
-            <div class="col-lg-4 col-md-3 col-sm-2">
+            <div class="col-lg-8 col-md-8 col-sm-8">
                 <h1 class="main-title" style="margin:0;padding:0; text-align: start"><i class="fas fa-cloud"></i>CloudMind</h1>
             </div>
-            <div class="col-lg-1 col-md-5 col-sm-1"></div>
-            <div class="col-lg-7 col-md-5 col-sm-5 justify-content-end">
-                <!--<div class="col">
-                    <h3 id="main_logged_in_uname">Signed in: <?php echo $_SESSION['Username']?></h3>
-                </div>-->
+            <div class="col-lg-4 col-md-4 col-sm-4 justify-content-end">
                 <div class="col">
                     <button type="button" class="btn solid user-icon" id="user_profile_btn" style="margin:0; margin-top:10px;" data-toggle="modal" data-target="#modal_profile">
                         <span title="User Profile"><i class="fa fa-user"></i></span>
+                        <!--<p id="main_logged_in_uname">Signed in: <?php echo $_SESSION['Username']?></p>-->
                     </button>
                 </div>
             </div>
         </div>
         <div class="row align-items-end" style="padding: 10px 10px 10px 5px;" >
-            <div class="col-lg-11 col-md-10 col-sm-9">
+            <div class="col-lg-10 col-md-10 col-sm-10">
                 <textarea class="post-placeholder" id="post_text" placeholder="What's on your mind? (Max:300 characters)" maxlength="300"></textarea>
             </div>
-            <div class="col">
+            <div class="col-lg-2 col-md-2 col-sm-2">
                 <button class="btn solid" id="post_btn" style="width:100%;">POST</button>
             </div>
         </div>
         <div class="row align-items-center posts" id="posts_container">
             <button class="btn solid" id="new_posts_btn">New Posts!</button>
             <ul class="posts-list" id="posts_list">
-                <li class="post-cont" id="post'+PostArray[i]['PostId']+'">
-                    <div class="grid-container">
-                        <div class="item2">
-                            <i class="post-img-holder fa fa-tint fa-2x mb-1"></i>
-                            <h2>Hris3</h2>
-                        </div>
-                        <div class="item3">
-                            <p class="post-text">"Some text that don't make sense"</p>
-                            <p style="color:white">the date all in pearly white</p>
-                        </div>
-                        <div class="item4"><span title="Delete Post?"><button class="btn solid delete-post">
-                            <i class="fas fa-trash"></i></button></span>
-                        </div>
-                    </div>
-                </li>
             </ul>
             <!--<span title="To Bottom"><button class="btn solid" id="bottom_post_button"><i class="fas fa-arrow-down"></i></button></span>-->
         </div>
