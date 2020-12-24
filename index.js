@@ -252,7 +252,7 @@ function getData(TypeStr, OutputStr){
             Swal.fire('You\'ve been registered!',
                 'Go ahead and log in!',
                 'success'
-            ).then((result) => {
+            ).then(() => {
                 location.reload();
             });
         }
@@ -272,7 +272,7 @@ function getData(TypeStr, OutputStr){
                 icon: 'info',
                 title: 'Email Sent',
                 text: 'You should receive new login info at '+ RecEmailInput.value.toString()
-            }).then((result) => {
+            }).then(() => {
                 location.reload();
             });
         }
@@ -287,7 +287,7 @@ function getData(TypeStr, OutputStr){
             Swal.fire('Password changed!',
                 'You can now log in with your new password',
                 'success'
-            ).then((result) => {
+            ).then(() => {
                 location.reload();
             })
         }else{

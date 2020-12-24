@@ -156,10 +156,6 @@ INFO_CANCEL_BTN.addEventListener('click', function(){
     USER_INFO_MODAL.style.display='block';
     ImageChangeBool = false;
 
-    let ImageHolder = document.getElementById('temp_photo_change');
-
-
-
     let ChangeFnameInput = document.getElementById('change_fname');
     let ChangeLnameInput = document.getElementById('change_lname');
     let ChangeUnameInput = document.getElementById('change_uname');
@@ -353,7 +349,7 @@ function updateData(){
                 Swal.fire('Image changed!',
                     php_script_response,
                     'success'
-                ).then((result) => {
+                ).then(() => {
                     document.getElementById('conf_current_pass').value = '';
                 });
             }
@@ -621,7 +617,7 @@ function getData(TypeStr, OutputStr){
                 icon: 'error',
                 title: 'Oops...',
                 text: 'User has been blocked due to too many failed password attempts. Returning to Login page.',
-            }).then((result) => {
+            }).then(() => {
                 window.location.href='index.php';
             })
         }else{
@@ -634,7 +630,7 @@ function getData(TypeStr, OutputStr){
             Swal.fire('Your user has been deleted!',
                 'You will now be redirected to the login page',
                 'success'
-            ).then((result) => {
+            ).then(() => {
                 window.location.href='index.php';
             });
         }else{
@@ -655,7 +651,7 @@ function getData(TypeStr, OutputStr){
                 icon: 'error',
                 title: 'Blocked',
                 text: 'User has been blocked due to too many failed password attempts. Returning to Login page.'
-            }).then((result) => {
+            }).then(() => {
                 window.location.href='index.php';
             });
 
@@ -782,7 +778,7 @@ function sendLoadPosts(NumPosts){
 }
 
 function logoutMsg(Name){
-    Swal.fire('Goodbye, '+Name+'!').then((result) => {
+    Swal.fire('Goodbye, '+Name+'!').then(() => {
         window.location.href='index.php';
     });
 }
@@ -958,7 +954,7 @@ function setValid(ElementId){
 
 //Additional UX functions
 DELETE_USER_BACK_BTN.addEventListener('click',function(){
-    let ConfCurrPassInput = document.getElementById('conf_current_pass').value='';
+    document.getElementById('conf_current_pass').value='';
 });
 $(document).ready(function(){
     $('#edit_info_form').keypress(function(e){

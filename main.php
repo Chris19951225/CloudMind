@@ -34,7 +34,7 @@
                 <h1 class="main-title" style="margin:0;padding:0; text-align: start"><i class="fas fa-cloud"></i>CloudMind</h1>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-3 justify-content-end user-icon-div">
-                    <button type="button" class="btn solid user-icon" id="user_profile_btn" style="margin:0; margin-top:10px;" data-toggle="modal" data-target="#modal_profile">
+                    <button type="button" class="btn solid user-icon" id="user_profile_btn" style="margin: 10px 0 0;" data-toggle="modal" data-target="#modal_profile">
                         <span title="User Profile"><i class="fa fa-user"></i></span>
                     </button>
             </div>

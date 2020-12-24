@@ -23,7 +23,7 @@ class Post
     }
 
     //Get methods
-    function getPostText(){
+    /*function getPostText(){
         return $this->PostTextStr;
     }
 
@@ -42,7 +42,7 @@ class Post
 
     function setUserIdInt($UserIdInt){
         $this->UserIdInt = $UserIdInt;
-    }
+    }*/
 
     function savePost(){
         $ConnStr = new mysqli($this->ServernameStr, $this->DBUsernameStr, $this->DBPassStr, $this->DBnameStr);
