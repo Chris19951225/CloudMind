@@ -30,24 +30,21 @@
     <div class="post-box col-md-10">
         <!--<div class="row posts-heading"><h2 class="title">Recent Posts</h2></div>-->
         <div class="row align-items-end" >
-            <div class="col-lg-8 col-md-8 col-sm-8">
+            <div class="col-lg-8 col-md-8 col-sm-8 col-9 title-div">
                 <h1 class="main-title" style="margin:0;padding:0; text-align: start"><i class="fas fa-cloud"></i>CloudMind</h1>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 justify-content-end">
-                <div class="col">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-3 justify-content-end user-icon-div">
                     <button type="button" class="btn solid user-icon" id="user_profile_btn" style="margin:0; margin-top:10px;" data-toggle="modal" data-target="#modal_profile">
                         <span title="User Profile"><i class="fa fa-user"></i></span>
-                        <!--<p id="main_logged_in_uname">Signed in: <?php echo $_SESSION['Username']?></p>-->
                     </button>
-                </div>
             </div>
         </div>
         <div class="row align-items-end" style="padding: 10px 10px 10px 5px;" >
-            <div class="col-lg-10 col-md-10 col-sm-10">
+            <div class="col-lg-10 col-md-10 col-sm-10 col-9">
                 <textarea class="post-placeholder" id="post_text" placeholder="What's on your mind? (Max:300 characters)" maxlength="300"></textarea>
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-2">
-                <button class="btn solid" id="post_btn" style="width:100%;">POST</button>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-3">
+                <button class="btn solid" id="post_btn">POST</button>
             </div>
         </div>
         <div class="row align-items-center posts" id="posts_container">

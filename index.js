@@ -219,7 +219,6 @@ function getData(TypeStr, OutputStr){
     if (TypeStr === 'Login') {
         let PasswordInput = document.getElementById('login_pass');
         let UsernameInput = document.getElementById('login_uname');
-
         if (OutputStr.includes('Wrong-Password')) {
             setInvalid(PasswordInput, 'Password is incorrect, Attempts left: ' + (3-parseInt(OutputStr.charAt(OutputStr.length-1))).toString());
         }else if(OutputStr === 'Nonexistent'){
@@ -332,6 +331,7 @@ function sendDataRecover(emailStr)
 
 function sendDataLogin(UsernameStr,PasswordStr)
 {
+    alert('We here!');
     $.ajax({
         url: 'dataHandler.php',
         data: {

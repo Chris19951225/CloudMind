@@ -9,7 +9,7 @@ const PRE_USER_DELETE_BTN = document.querySelector('#pre_user_delete_btn');
 const DELETE_USER_BTN = document.querySelector('#delete_user_btn');
 const UPLOAD_PHOTO_BTN = document.querySelector('#upload_photo_btn');
 const IMAGE_INPUT = document.querySelector('#image_input');
-const NEW_POST_BTN = document.querySelector('#new_posts_btn');
+const DELETE_USER_BACK_BTN = document.querySelector('#delete_back_btn');
 const EMAIL_EXP = /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/;
 const PASS_EXP = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
 
@@ -52,6 +52,9 @@ $(document).on('click','.yes-delete-post', function() {
     $(document).on('transitionend', '.removed-item', function () {
         $('li').remove('.removed-item');
         NumPosts--;
+        if(NumPosts < 5){
+            NumPosts = 5;
+        }
         ResumeTimerBool = true;
     });
 });
@@ -400,20 +403,20 @@ function postReturn(PostIdStr){
         newLi.className = 'post-cont new-item';
         newLi.id = 'post'+PostIdStr;
         if(ImgExists){
-            newLi.innerHTML = '<div class="col"><img class="user-pfp" src="'+ImgName+'" alt="User Image">'+
-                '<h2>'+UsernameStr+'</h2></div>'+
+            newLi.innerHTML = '<p class="new-message">NEW!</p><img class="user-pfp" src="'+ImgName+'" alt="User Image">'+
+                '<h2>'+UsernameStr+'</h2>'+
                 '<p class="post-text">"'+PostTextStr+'"</p>'+
-                '<p>'+CurrDateTime.toISOString().split('T')[0]+' '
+                '<p class="date">'+CurrDateTime.toISOString().split('T')[0]+' '
                 +CurrDateTime.toISOString().split('T')[1].slice(0,-5)+'</p>'+
-                '</div><span title="Delete Post?"><button class="btn solid delete-post">' +
+                '<span title="Delete Post?"><button class="btn solid delete-post">' +
                 '<i class="fas fa-trash"></i></span></button>';
         }else{
-            newLi.innerHTML = '<div class="col"><i class="fa fa-tint fa-2x mb-1"></i>'+
-                '<h2>'+UsernameStr+'</h2></div>'+
+            newLi.innerHTML = '<p class="new-message">NEW!</p><i class="fa fa-tint fa-2x mb-1"></i>'+
+                '<h2>'+UsernameStr+'</h2>'+
                 '<p class="post-text">"'+PostTextStr+'"</p>'+
-                '<p>'+CurrDateTime.toISOString().split('T')[0]+' '
+                '<p class="date">'+CurrDateTime.toISOString().split('T')[0]+' '
                 +CurrDateTime.toISOString().split('T')[1].slice(0,-5)+'</p>'+
-                '</div><span title="Delete Post?"><button class="btn solid delete-post">' +
+                '<span title="Delete Post?"><button class="btn solid delete-post">' +
                 '<i class="fas fa-trash"></i></span></button>';
         }
 
@@ -429,41 +432,94 @@ function postReturn(PostIdStr){
 function loadAllPosts(PostJson){
     let PostArray = JSON.parse(PostJson.toString());
     let PostsList = document.getElementById('posts_list');
+    let ScrollCurrent = document.getElementById('posts_container').scrollTop;
     PostsList.innerHTML = '';
     for(let i in PostArray){
         if(PostArray[i]['Belongs'] === 'Yes'){
             if(PostArray[i]['Image'] !== 'none'){
-                PostsList.innerHTML += '<li class="post-cont" id="post'+PostArray[i]['PostId']+'">' +
-                    '<img class="user-pfp" src="img/'+PostArray[i]['Image']+'" alt="User Image">'+
-                    '<h2>'+PostArray[i]['Username']+'</h2>'+
-                    '<p class="post-text">'+'"'+PostArray[i]['PostText']+'"'+'</p>'+
-                    '<p class="date">'+PostArray[i]['PostTimeStamp']+'</p>'+
-                    '<span title="Delete Post?"><button class="btn solid delete-post">' +
-                    '<i class="fas fa-trash"></i></button></span></li>';
+                if(PostArray[i]['NotOld'] === '1'){
+                    PostsList.innerHTML += '<li class="post-cont new-item-load" id="post'+PostArray[i]['PostId']+'">' +
+                        '<p class="new-message">NEW!</p><img class="user-pfp" src="img/'+PostArray[i]['Image']+'" alt="User Image">'+
+                        '<h2>'+PostArray[i]['Username']+'</h2>'+
+                        '<p class="post-text">'+'"'+PostArray[i]['PostText']+'"'+'</p>'+
+                        '<p class="date">'+PostArray[i]['PostTimeStamp']+'</p>'+
+                        '<span title="Delete Post?"><button class="btn solid delete-post">' +
+                        '<i class="fas fa-trash"></i></button></span></li>';
+                        if(ScrollCurrent > 50){
+                            document.getElementById('new_posts_btn').style.display = 'block';
+                        }
+                }else{
+                    PostsList.innerHTML += '<li class="post-cont" id="post'+PostArray[i]['PostId']+'">' +
+                        '<img class="user-pfp" src="img/'+PostArray[i]['Image']+'" alt="User Image">'+
+                        '<h2>'+PostArray[i]['Username']+'</h2>'+
+                        '<p class="post-text">'+'"'+PostArray[i]['PostText']+'"'+'</p>'+
+                        '<p class="date">'+PostArray[i]['PostTimeStamp']+'</p>'+
+                        '<span title="Delete Post?"><button class="btn solid delete-post">' +
+                        '<i class="fas fa-trash"></i></button></span></li>';
+                }
             }else{
-                PostsList.innerHTML += '<li class="post-cont" id="post'+PostArray[i]['PostId']+'">' +
-                    '<i class="post-img-holder fa fa-tint fa-2x mb-1"></i>'+
-                    '<h2>'+PostArray[i]['Username']+'</h2>'+
-                    '<p class="post-text">'+'"'+PostArray[i]['PostText']+'"'+'</p>'+
-                    '<p class="date">'+PostArray[i]['PostTimeStamp']+'</p>'+
-                    '<span title="Delete Post?"><button class="btn solid delete-post">' +
-                    '<i class="fas fa-trash"></i></button></span></li>';
+                if(PostArray[i]['NotOld'] === '1'){
+                    PostsList.innerHTML += '<li class="post-cont new-item-load" id="post'+PostArray[i]['PostId']+'">' +
+                        '<p class="new-message">NEW!</p><i class="post-img-holder fa fa-tint fa-2x mb-1"></i>'+
+                        '<h2>'+PostArray[i]['Username']+'</h2>'+
+                        '<p class="post-text">'+'"'+PostArray[i]['PostText']+'"'+'</p>'+
+                        '<p class="date">'+PostArray[i]['PostTimeStamp']+'</p>'+
+                        '<span title="Delete Post?"><button class="btn solid delete-post">' +
+                        '<i class="fas fa-trash"></i></button></span></li>';
+                    if(ScrollCurrent > 50){
+                        document.getElementById('new_posts_btn').style.display = 'block';
+                    }
+                }else{
+                    PostsList.innerHTML += '<li class="post-cont" id="post'+PostArray[i]['PostId']+'">' +
+                        '<i class="post-img-holder fa fa-tint fa-2x mb-1"></i>'+
+                        '<h2>'+PostArray[i]['Username']+'</h2>'+
+                        '<p class="post-text">'+'"'+PostArray[i]['PostText']+'"'+'</p>'+
+                        '<p class="date">'+PostArray[i]['PostTimeStamp']+'</p>'+
+                        '<span title="Delete Post?"><button class="btn solid delete-post">' +
+                        '<i class="fas fa-trash"></i></button></span></li>';
+                }
             }
         }else{
             if(PostArray[i]['Image'] !== 'none'){
-                PostsList.innerHTML += '<li class="post-cont" id="post'+PostArray[i]['PostId']+'">' +
-                    '<img class="user-pfp" src="img/'+PostArray[i]['Image']+'" alt="User Image">'+
-                    '<h2>'+PostArray[i]['Username']+'</h2>'+
-                    '<p class="post-text">'+'"'+PostArray[i]['PostText']+'"'+'</p>'+
-                    '<p class="date">'+PostArray[i]['PostTimeStamp']+'</p>'+
-                    '</li>';
+                if(PostArray[i]['NotOld'] === '1'){
+                    PostsList.innerHTML += '<li class="post-cont new-item-load" id="post'+PostArray[i]['PostId']+'">' +
+                        '<p class="new-message">NEW!</p><img class="user-pfp" src="img/'+PostArray[i]['Image']+'" alt="User Image">'+
+                        '<h2>'+PostArray[i]['Username']+'</h2>'+
+                        '<p class="post-text">'+'"'+PostArray[i]['PostText']+'"'+'</p>'+
+                        '<p class="date">'+PostArray[i]['PostTimeStamp']+'</p>'+
+                        '</li>';
+                    if(ScrollCurrent > 50){
+                        document.getElementById('new_posts_btn').style.display = 'block';
+                    }
+                }else{
+                    PostsList.innerHTML += '<li class="post-cont" id="post'+PostArray[i]['PostId']+'">' +
+                        '<img class="user-pfp" src="img/'+PostArray[i]['Image']+'" alt="User Image">'+
+                        '<h2>'+PostArray[i]['Username']+'</h2>'+
+                        '<p class="post-text">'+'"'+PostArray[i]['PostText']+'"'+'</p>'+
+                        '<p class="date">'+PostArray[i]['PostTimeStamp']+'</p>'+
+                        '</li>';
+                }
+
             }else{
-                PostsList.innerHTML += '<li class="post-cont" id="post'+PostArray[i]['PostId']+'">' +
-                    '<i class="fa fa-tint fa-2x mb-1"></i>'+
-                    '<h2>'+PostArray[i]['Username']+'</h2>'+
-                    '<p class="post-text">'+'"'+PostArray[i]['PostText']+'"'+'</p>'+
-                    '<p class="date">'+PostArray[i]['PostTimeStamp']+'</p>'+
-                    '</li>';
+                if(PostArray[i]['NotOld'] === '1') {
+                    PostsList.innerHTML += '<li class="post-cont new-item-load" id="post'+PostArray[i]['PostId']+'">' +
+                        '<p class="new-message">NEW!</p><i class="fa fa-tint fa-2x mb-1"></i>'+
+                        '<h2>'+PostArray[i]['Username']+'</h2>'+
+                        '<p class="post-text">'+'"'+PostArray[i]['PostText']+'"'+'</p>'+
+                        '<p class="date">'+PostArray[i]['PostTimeStamp']+'</p>'+
+                        '</li>';
+                    if(ScrollCurrent > 50){
+                        document.getElementById('new_posts_btn').style.display = 'block';
+                    }
+                }else{
+                    PostsList.innerHTML += '<li class="post-cont" id="post'+PostArray[i]['PostId']+'">' +
+                        '<i class="fa fa-tint fa-2x mb-1"></i>'+
+                        '<h2>'+PostArray[i]['Username']+'</h2>'+
+                        '<p class="post-text">'+'"'+PostArray[i]['PostText']+'"'+'</p>'+
+                        '<p class="date">'+PostArray[i]['PostTimeStamp']+'</p>'+
+                        '</li>';
+                }
+
             }
         }
 
@@ -900,6 +956,9 @@ function setValid(ElementId){
 }
 
 //Additional UX functions
+DELETE_USER_BACK_BTN.addEventListener('click',function(){
+    let ConfCurrPassInput = document.getElementById('conf_current_pass').value='';
+});
 $(document).ready(function(){
     $('#edit_info_form').keypress(function(e){
         if(e.keyCode===13)
@@ -935,6 +994,9 @@ document.getElementById('posts_container').addEventListener('scroll', function()
         ResumeTimerBool = true;
     },10000);
     let ScrollCurrent = document.getElementById('posts_container').scrollTop;
+    if(ScrollCurrent < 100){
+        document.getElementById('new_posts_btn').style.display = 'none';
+    }
     let ScrollHeight = document.getElementById('posts_container').scrollHeight;
     if(!ScrollPause){
         if(ScrollCurrent + 800 > ScrollHeight) {
@@ -947,7 +1009,13 @@ document.getElementById('posts_container').addEventListener('scroll', function()
 
 $('#bottom_post_button').click(function(){
     $("#posts_container").animate({
-        scrollTop: $(
-            '#posts_container').get(0).scrollHeight
+        scrollTop: $('#posts_container').get(0).scrollHeight
     }, 500);
+});
+
+document.getElementById('new_posts_btn').addEventListener('click',function(){
+    $("#posts_container").animate({
+        scrollTop: 0
+    }, 500);
+    document.getElementById('new_posts_btn').style.display = 'none';
 });

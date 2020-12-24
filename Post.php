@@ -86,6 +86,7 @@ class Post
                 $PostsArray[$ArraySizeInt]['PostTimeStamp'] = $row['PostTimeStamp'];
                 $PostsArray[$ArraySizeInt]['PostText'] = $row['PostText'];
                 $PostsArray[$ArraySizeInt]['UserId'] = $row['UserId'];
+                $PostsArray[$ArraySizeInt]['NotOld'] = $row['NotOld'];
                 $SqlStr = "SELECT * FROM CloudMind.Users WHERE Id=".$row['UserId'];
                 $ResultStr2 = $ConnStr->query($SqlStr);
                 $row2 = $ResultStr2->fetch_assoc();
@@ -132,6 +133,22 @@ class Post
         }
 
         $SqlStr = "DELETE FROM CloudMind.Posts WHERE UserId=".$UserIdInt;
+        if ($ConnStr->query($SqlStr) === TRUE) {
+            if ($ConnStr->affected_rows > 0) {
+                $ConnStr->close();
+                return true;
+            }
+        }
+        $ConnStr->close();
+        return false;
+    }
+
+    function removeNew($PostId){
+        $ConnStr = new mysqli($this->ServernameStr, $this->DBUsernameStr, $this->DBPassStr, $this->DBnameStr);
+        if ($ConnStr->connect_error) {
+            die('Connection failed: ' . $ConnStr->connect_error);
+        }
+        $SqlStr = "UPDATE CloudMind.Posts SET NotOld= 0 WHERE PostId=".$PostId;
         if ($ConnStr->query($SqlStr) === TRUE) {
             if ($ConnStr->affected_rows > 0) {
                 $ConnStr->close();

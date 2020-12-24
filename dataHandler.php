@@ -93,6 +93,12 @@ function confirmLogin($UsernameStr,$PasswordStr){
 
 function confirmRegister($FnameStr,$LnameStr,$EmailStr,$UnameStr,$PassStr)
 {
+    $FnameStr = str_replace("'","''",$FnameStr);
+    $LnameStr = str_replace("'","''",$LnameStr);
+    $UnameStr = str_replace("'","''",$UnameStr);
+    $EmailStr = str_replace("'","''",$EmailStr);
+    $PassStr = str_replace("'","''",$PassStr);
+
     $options = [
         'cost' => 12,
     ];
@@ -137,6 +143,7 @@ function deletePost($PostIdInt){
 }
 //Post Functions*********************************************************************************************
 function addPost($PostStr){
+    $PostStr = str_replace("'","''",$PostStr);
     $NewPost = new Post();
     $User = new User();
     $User->loadUser($_SESSION['Username']);
@@ -149,7 +156,29 @@ function addPost($PostStr){
     }
 }
 
+function changePostState(){
+    $TempPost = new Post();
+    $PostArray = $TempPost->loadAllPosts();
+    foreach($PostArray as $Post){
+        $PostTime = new DateTime($Post['PostTimeStamp']);
+        $CurrTime = new DateTime();
+        $TimePass = $PostTime->diff($CurrTime);
+        $minutes = 0;
+        if($TimePass->days > 0){
+            $minutes = $TimePass->days * 24 * 60;
+        }
+        if($TimePass->h > 0){
+            $minutes += $TimePass->h * 60;
+        }
+        $minutes += $TimePass->i;
+        if(60 - $minutes > 1){
+            $TempPost->removeNew($Post['PostId']);
+        }
+    }
+}
+
 function loadAllPosts($NumPostsInt){
+    changePostState();
     $NewPost = new Post();
     $PostArray = $NewPost->loadAllPosts($_SESSION['Username'],$NumPostsInt);
     $CurrPost = 0;
@@ -278,6 +307,7 @@ if(isset($_POST['num_posts'])){
     deleteOldData();
     $NumPostsInt = $_POST['num_posts'];
     loadAllPosts($NumPostsInt);
+    $_SESSION['Test'] = 'Honhonhonhon';
     unset($_POST['num_posts']);
 }
 
@@ -412,3 +442,4 @@ if(isset($_POST['img_exists'])){
     }
     unset($_POST['img_exists']);
 }
+

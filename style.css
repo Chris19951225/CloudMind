@@ -312,6 +312,11 @@ form.sign-up-form{
 }
 
 /*Media sizing*/
+@media (max-width: 1200px) {
+    #post_btn{
+        width:auto;
+    }
+}
 @media(max-height: 700px){
     .container{
         min-height: 600px;
@@ -421,6 +426,14 @@ form.sign-up-form{
     }
 }
 @media(max-width:570px){
+
+    .user-icon-div{
+        margin-left:0;
+    }
+    .title-div{
+        margin-right:0;
+    }
+
     form{
         padding:0 1.5rem;
     }
@@ -445,6 +458,26 @@ form.sign-up-form{
     .container.sign-up-mode::before{
         bottom:25%;
         left:50%;
+    }
+}
+@media(max-width: 500px){
+    .post-placeholder{
+        font-size: 0.8rem;
+    }
+    h1.main-title{
+        font-size: 2rem;
+        font-weight: 600;
+    }
+    #user_profile_btn{
+        width:auto;
+    }
+
+    h2.title{
+        margin-top:120%;
+    }
+
+    .btn.solid{
+        width:auto;
     }
 }
 
@@ -525,10 +558,12 @@ h3{
 #new_posts_btn{
     position: -webkit-sticky;
     position: sticky;
+    display: none;
+    width:auto;
+    background-color: #02fa02;
     top: 10px;
-    display:none;
-    vertical-align: top;
     opacity:80%;
+    z-index: 10000;
 }
 
 .post-box{
@@ -579,6 +614,7 @@ h2{
 
 .posts-list{
     width:100%;
+    position:relative;
 }
 .date{
     font-size: 1rem;
@@ -597,6 +633,8 @@ h2{
 
 .posts{
     overflow-y:auto;
+    justify-content: center;
+    position:relative;
     height:100%;
     transition: height 2s;
 }
@@ -768,10 +806,20 @@ p.user-info{
 .yes-delete-post:hover{
     background-color: red;
 }
+p.new-message{
+    color:#02fa02;
+    position:absolute;
+}
 
 li.new-item {
     opacity: 0;
+    border-color: #02fa02;
     animation: new-item-animation .3s linear forwards;
+}
+
+li.new-item-load {
+    position:relative;
+    border-color: #02fa02;
 }
 
 @keyframes new-item-animation {

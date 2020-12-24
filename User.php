@@ -320,7 +320,7 @@ class User
 
             $SqlStr = "INSERT INTO CloudMind.Users(FirstName, LastName, EmailAddress, Username, Password, State)
                     VALUES ('" . $this->FnameStr . "','" . $this->LnameStr . "','" . $this->EmailStr
-                    . "','" . $this->UnameStr . "','".$this->PassStr."', 'Valid')";
+                    . "','" . $this->UnameStr . "','".$this->PassStr."', 1)";
             if ($ConnStr->query($SqlStr) === TRUE) {
                 if ($ConnStr->affected_rows > 0) {
 
@@ -353,28 +353,6 @@ class User
         $ConnStr->close();
         return false;
     }
-
-    function deleteUserPerm($UserIdInt){
-        // Create connection
-        $ConnStr = new mysqli($this->ServernameStr, $this->DBUsernameStr, $this->DBPassStr, $this->DBnameStr);
-        // Check connection
-        if ($ConnStr->connect_error) {
-            die('Connection failed: ' . $ConnStr->connect_error);
-        }
-
-        $SqlStr = "DELETE FROM CloudMind.Users WHERE Id=".$UserIdInt;
-
-        if ($ConnStr->query($SqlStr) === TRUE) {
-            if ($ConnStr->affected_rows > 0) {
-                $ConnStr->close();
-                return true;
-            }
-        }
-
-        $ConnStr->close();
-        return false;
-    }
-
 
     function loadUser($UnameStr)
     {
@@ -427,26 +405,5 @@ class User
         }
 
         return false;
-    }
-
-    function loadAllDeletedUsers() {
-        $ConnStr = new mysqli($this->ServernameStr, $this->DBUsernameStr, $this->DBPassStr, $this->DBnameStr);
-        // Check connection
-        if ($ConnStr->connect_error) {
-            die('Connection failed: ' . $ConnStr->connect_error);
-        }
-        $SqlStr = "SELECT Id FROM CloudMind.Users WHERE State='Deleted'";
-
-        $ResultStr = $ConnStr->query($SqlStr);
-        $ConnStr->close();
-        if ($ResultStr->num_rows > 0) {
-            $ArraySizeInt = 0;
-            $DeletedUsersArray = array();
-            while ($row = $ResultStr->fetch_assoc()){
-                $DeletedUsersArray[$ArraySizeInt] = $row['Id'];
-                $ArraySizeInt++;
-            }
-            return $DeletedUsersArray;
-        } else return false;
     }
 }
