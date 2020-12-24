@@ -144,7 +144,7 @@
                     </div>
                 </div>
                 <!--Header-->
-                <div id="user_info_modal" >
+                <div id="user_info_modal"  class="user-info-modal">
                     <div class="modal-header">
                         <div class="justify-content-center" style="text-align: center; margin: 0 auto; padding:10px">
                             <div id="info_photo_div" class="info_photo_div">

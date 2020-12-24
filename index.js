@@ -331,7 +331,6 @@ function sendDataRecover(emailStr)
 
 function sendDataLogin(UsernameStr,PasswordStr)
 {
-    alert('We here!');
     $.ajax({
         url: 'dataHandler.php',
         data: {

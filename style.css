@@ -472,13 +472,16 @@ form.sign-up-form{
         width:auto;
     }
 
-    h2.title{
-        margin-top:120%;
+    .edit-info-form .btn.solid{
+        width:130px;
+    }
+    .user-info-modal .btn.solid{
+        width:130px;
+    }
+    .delete-modal .btn.solid{
+        width:130px;
     }
 
-    .btn.solid{
-        width:auto;
-    }
 }
 
 .user-icon{

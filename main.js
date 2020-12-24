@@ -136,7 +136,6 @@ LOGOUT_BTN.addEventListener('click', function(e){
     e.preventDefault();
     logout();
     localStorage.setItem('logout-event', 'logout' + Math.random());
-    window.location.href='index.php';
 });
 
 INFO_EDIT_BTN.addEventListener('click',function(){
@@ -783,7 +782,9 @@ function sendLoadPosts(NumPosts){
 }
 
 function logoutMsg(Name){
-    Swal.fire('Goodbye, '+Name+'!');
+    Swal.fire('Goodbye, '+Name+'!').then((result) => {
+        window.location.href='index.php';
+    });
 }
 
 function sendDataPost(PostStr){

@@ -19,11 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="12fc683e-8687-47bc-af90-945b699a8157" name="Default Changelist" comment="Version 2!">
+    <list default="true" id="12fc683e-8687-47bc-af90-945b699a8157" name="Default Changelist" comment="Version 2 completed!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/Post.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/dataHandler.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/main.php" afterDir="false" />
@@ -130,7 +127,7 @@
       <workItem from="1608449064831" duration="52750000" />
       <workItem from="1608649328876" duration="2166000" />
       <workItem from="1608651513672" duration="28079000" />
-      <workItem from="1608730718249" duration="22727000" />
+      <workItem from="1608730718249" duration="23930000" />
     </task>
     <task id="LOCAL-00001" summary="changes to images, animations, transitions, spacing and more style things.">
       <created>1607504213586</created>
@@ -195,7 +192,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608731819198</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Version 2 completed!">
+      <created>1608790032977</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1608790032977</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,7 +227,8 @@
     <MESSAGE value="Cleaning up warnings" />
     <MESSAGE value="Checkpoint for everything" />
     <MESSAGE value="Version 2!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 2!" />
+    <MESSAGE value="Version 2 completed!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 2 completed!" />
   </component>
   <component name="WindowStateProjectService">
     <state x="475" y="55" key="#PHP" timestamp="1607533995514">
